@@ -1,4 +1,3 @@
-import net.litola.SassPlugin
 
 name := """PlayFrameworkRecruitConsole"""
 
@@ -20,4 +19,4 @@ libraryDependencies ++= Seq(
   // "group" % "artifact" % "version"
 )
 
-play.Project.playScalaSettings ++ SassPlugin.sassSettings
+play.Project.playScalaSettings
