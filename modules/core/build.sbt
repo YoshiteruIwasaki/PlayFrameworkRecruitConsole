@@ -1,6 +1,6 @@
 import play.Project._
 
-name := """PlayFrameworkRecruitConsoleAdmin"""
+name := """PlayFrameworkRecruitConsoleCore"""
 
 version := "1.0-SNAPSHOT"
 
