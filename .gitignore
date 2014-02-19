@@ -18,3 +18,5 @@ bin
 /.sass-cache
 /project/*-shim.sbt
 /activator-sbt-atmos-akka-shim.sbt
+
+.DS_Store
