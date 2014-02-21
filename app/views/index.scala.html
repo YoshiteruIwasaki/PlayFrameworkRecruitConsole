@@ -1,9 +1,19 @@
-@(message: String)
+@(message: String, beanList: List[models.beans.SiteBean])
 
 @main("Welcome to Play Framework") {
 
     <div class="well">
         <h1>@message</h1>
     </div>
+
+<ul>
+	@if(beanList != null && beanList.size() > 0){
+	    @for(bean <- beanList){
+	    <li>
+	    <a href="@{bean.url}"><img title="@{bean.title}" src="@{bean.thumbUrl}" alt="@{bean.url}" width="400" height="300" /></a>
+	    @{bean.title}</li>
+	    }
+	}
+</ul>
 
 }
