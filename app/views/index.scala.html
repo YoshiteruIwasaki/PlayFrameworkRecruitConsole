@@ -1,19 +1,28 @@
-@(message: String, beanList: List[models.beans.SiteBean])
+@(message: String, description: String, beanList: List[models.beans.SiteBean])
 
-@main("Welcome to Play Framework") {
+@main(message, description) {
 
-    <div class="well">
-        <h1>@message</h1>
-    </div>
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+  <div class="container">
+    <h1>人が働くところに、理由がある。</h1>
+    <p>決算書では見えてこない、人を見て会社を選ぶ新しい就職活動の始まりです。</p>
+  </div>
+</div>
 
-<ul>
+<div class="container">
+<div class="row">
 	@if(beanList != null && beanList.size() > 0){
 	    @for(bean <- beanList){
-	    <li>
-	    <a href="@{bean.url}"><img title="@{bean.title}" src="@{bean.thumbUrl}" alt="@{bean.url}" width="400" height="300" /></a>
-	    @{bean.title}</li>
+		  <div class="col-sm-6 col-md-4">
+		    <div class="thumbnail">
+		    <a href="@{bean.url}"><img title="@{bean.title}" src="@{bean.thumbUrl}" alt="@{bean.url}" /></a>
+		    </div>
+		  </div>
 	    }
 	}
+</div>
+</div>
 </ul>
 
 }
