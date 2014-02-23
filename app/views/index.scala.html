@@ -17,9 +17,6 @@
 		  <div class="col-sm-6 col-md-4">
 		    <div class="thumbnail">
 		    <a href="@{bean.url}"><img title="@{bean.title}" src="@{bean.thumbUrl}" alt="@{bean.url}" /></a>
-		     <!--  <div class="caption">
-		        <p>@{bean.title}</p>
-		      </div> -->
 		    </div>
 		  </div>
 	    }
@@ -27,5 +24,15 @@
 </div>
 </div>
 
+
+<ul>
+	@if(beanList != null && beanList.size() > 0){
+	    @for(bean <- beanList){
+	    <li>
+	    <a href="@{bean.url}"><img title="@{bean.title}" src="@{bean.thumbUrl}" alt="@{bean.url}" width="400" height="300" /></a>
+	    @{bean.title}</li>
+	    }
+	}
+</ul>
 
 }
