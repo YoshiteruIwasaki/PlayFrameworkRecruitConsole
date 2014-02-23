@@ -11,13 +11,11 @@
 </div>
 
 <div class="container">
-<div class="row">
+<div class="row" id="site">
 	@if(beanList != null && beanList.size() > 0){
 	    @for(bean <- beanList){
 		  <div class="col-sm-6 col-md-4">
-		    <div class="thumbnail">
-		    <a href="@{bean.url}"><img title="@{bean.title}" src="@{bean.thumbUrl}" alt="@{bean.url}" /></a>
-		    </div>
+		    <a href="@{bean.url}" class="thumbnail"><img title="@{bean.title}" src="@{bean.thumbUrl}" alt="@{bean.url}" width="400" height="300" /></a>
 		  </div>
 	    }
 	}
