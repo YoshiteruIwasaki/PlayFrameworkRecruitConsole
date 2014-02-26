@@ -1,8 +1,29 @@
 $(function() {
-	$("#list0").preloader();
-});
+	function hoverImg() {
 
-$(function() {
+		$(document).on('mouseover', ".hover_img", function() {
+			var info = $(this).find("img");
+			info.stop().animate({
+				opacity : 0.2
+			}, 300);
+			$(".preloader").css({
+				'background' : 'none'
+			});
+		});
+		$(document).on('mouseout', ".hover_img", function() {
+			var info = $(this).find("img");
+			info.stop().animate({
+				opacity : 1
+			}, 300);
+			$(".preloader").css({
+				'background' : 'none'
+			});
+		});
+	}
+
+	$("#list0").preloader();
+	hoverImg();
+
 	$(window).bottom({
 		proximity : 0.5
 	});
@@ -21,13 +42,14 @@ $(function() {
 					} else {
 						$("#listContainer").append(data);
 					}
-					var page = parseInt( $("#page").val() );
+					var page = parseInt($("#page").val());
 					$("#page").val(page + 1);
 					// remove the loading text
 					$("#loading").hide();
 					// now that the ajax call is done, we can re-enable this
 					obj.data("loading", false);
-					$("#list"+page).preloader();
+					$("#list" + page).preloader();
+					hoverImg();
 				},
 
 				error : function(data) {

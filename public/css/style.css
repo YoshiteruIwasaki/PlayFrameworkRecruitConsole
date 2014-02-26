@@ -9,3 +9,8 @@ body {
     width: 350px;
     height: 263px;
 }
+
+.wrapper{
+  margin-top:20px;
+  margin-bottom:20px;
+}

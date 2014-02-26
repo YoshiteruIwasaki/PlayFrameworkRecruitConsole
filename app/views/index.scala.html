@@ -2,20 +2,12 @@
 
 @main(message, description) {
 
-<!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="jumbotron">
-  <div class="container">
-    <h1>人が働くところに、理由がある。</h1>
-    <p>決算書では見えてこない、人を見て会社を選ぶ新しい就職活動の始まりです。</p>
-  </div>
-</div>
-
 <div class="container" id="listContainer">
 <div class="row" id="list0">
 	@if(beanList != null && beanList.size() > 0){
 	    @for(bean <- beanList){
 		  <div class="col-sm-6 col-md-4">
-		  	<div class="thumbnail">
+		  	<div class="thumbnail hover_img">
 		    	<a href="@{bean.url}" class="fixpreload"><img title="@{bean.title}" src="@{bean.thumbUrl}" alt="@{bean.url}" /></a>
 		  	</div>
 		  </div>
