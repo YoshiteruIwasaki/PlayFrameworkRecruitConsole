@@ -3,7 +3,7 @@
 # ~~~~
 
 GET     /                           controllers.Application.index()
-GET     /listAjax/:page                           controllers.ajax.ListAjaxController.index(page:Integer)
+GET     /listAjax/:page                           controllers.ajax.SiteListAjaxController.index(page:Integer)
 
 ->  /admin admin.Routes
 
