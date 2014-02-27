@@ -8,8 +8,9 @@ libraryDependencies ++= Seq(
   // Select Play modules
   javaJdbc,  // Java database API
   javaEbean, // Java Ebean plugin
-  //javaJpa,   // Java JPA plugin
+  javaJpa,   // Java JPA plugin
   javaCore,  // The core Java API
+  filters,
   cache,
 	"org.webjars" %% "webjars-play" % "2.2.0",
 	"org.webjars" % "bootstrap" % "3.1.1",
