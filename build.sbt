@@ -12,17 +12,23 @@ libraryDependencies ++= Seq(
   javaCore,  // The core Java API
   filters,
   cache,
-	"org.webjars" %% "webjars-play" % "2.2.0",
-	"org.webjars" % "bootstrap" % "3.1.1",
-  	"org.webjars" % "font-awesome" % "4.0.3",
+  "org.webjars" %% "webjars-play" % "2.2.0",
+  "org.webjars" % "bootstrap" % "3.1.1",
+  "org.webjars" % "font-awesome" % "4.0.3",
   "mysql" % "mysql-connector-java" % "5.1.29",
-  "org.avaje.ebeanorm" % "avaje-ebeanorm-api" % "3.1.1")
+  "commons-codec" % "commons-codec" % "1.9",
+  "net.sf.opencsv" % "opencsv" % "2.3",
+  "org.codehaus.jackson" % "jackson-jaxrs" % "1.9.13",
+  "commons-beanutils" % "commons-beanutils" % "1.9.1")
 
 playJavaSettings
 
-lazy val common = project.in(file("modules/common"))
+lazy val common = RootProject(file("modules/common"))
+
 lazy val base = project.in(file("modules/base")).dependsOn(common).aggregate(common)
+
 lazy val core = project.in(file("modules/core")).dependsOn(common, base).aggregate(common, base)
+
 lazy val admin = project.in(file("modules/admin")).dependsOn(common, base, core).aggregate(common, base, core)
 
 lazy val main = project.in(file("."))
