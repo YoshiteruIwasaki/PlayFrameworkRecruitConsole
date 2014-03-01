@@ -15,7 +15,7 @@ import play.data.validation.Constraints.MaxLength;
 import play.data.validation.Constraints.MinLength;
 
 import com.avaje.ebean.annotation.CreatedTimestamp;
-import com.avaje.ebean.validation.NotNull;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class User extends Model {
