@@ -1,5 +1,5 @@
 @(title: String, description: String)(content: Html)
-
+@import _root_.views.html.helper._
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="@description">
     <meta name="author" content="">
-    <title>@title</title>
+    <title>@titleText(title)</title>
     <link rel='shortcut icon' type='image/png' href='@routes.Assets.at("images/favicon.png")'>
     <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.css"))'>
     <link rel='stylesheet' href='@routes.Assets.at("css/style.css")'>

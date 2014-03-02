@@ -1,0 +1,3 @@
+@(text: String, default: String)
+@import utils.base.helper._
+@if(text != null){@{text}|@{default}}else{@{default}}
