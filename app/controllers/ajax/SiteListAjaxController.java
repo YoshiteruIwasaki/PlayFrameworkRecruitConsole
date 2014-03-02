@@ -3,11 +3,11 @@ package controllers.ajax;
 import java.util.List;
 
 import models.beans.SiteBean;
-import play.mvc.Controller;
 import play.mvc.Result;
 import services.beans.SiteBeanService;
+import controllers.base.BaseController;
 
-public class SiteListAjaxController extends Controller {
+public class SiteListAjaxController extends BaseController {
 
 	public static Result index(int page) {
 		List<SiteBean> resultList = SiteBeanService.getSiteBeanResultList(page);
