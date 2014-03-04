@@ -1,0 +1,34 @@
+@(form: Form[models.beans.SiteBean], showError:Boolean)
+@implicitField = @{ views.html.helper.FieldConstructor(views.html.base.helper.bootstrapField.f) }
+@main("サイト登録", null) {
+
+<div class="container">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">サイト登録</h3>
+  </div>
+  <div class="panel-body">
+    URLを入力して、「確認する」をクリックして下さい。
+  </div>
+</div>
+<div class="row">
+@if(showError && form.hasErrors) {
+<div class="alert alert-danger"><h3>入力内容にエラーがあります。</h3>
+	<ul>
+		@for( error <- form.errors ){
+			@for( item <- error._2 ) {
+					<li>@item.message</li>
+			}
+		}
+	</ul>
+</div>
+}
+@helper.form(action = controllers.site.routes.SiteFormController.confirm(), 'role -> "form") {
+@helper.inputText(form("title"), 'id -> "InputTitle", 'class -> "form-control", 'placeholder -> "タイトル" )
+@helper.inputText(form("url"), 'id -> "InputUrl", 'class -> "form-control", 'placeholder -> "URL" )
+<button type="submit" class="btn btn-info btn-lg btn-block">確認する</button>
+}
+</div>
+</div>
+
+}

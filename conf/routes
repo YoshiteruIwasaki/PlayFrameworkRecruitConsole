@@ -4,6 +4,11 @@
 
 GET     /                           controllers.Application.index()
 GET     /listAjax/:page                           controllers.ajax.SiteListAjaxController.index(page:Integer)
+# Form
+GET     /register                           controllers.site.SiteFormController.register()
+POST     /confirm                           controllers.site.SiteFormController.confirm()
+POST     /submit                           controllers.site.SiteFormController.submit()
+GET     /success                           controllers.site.SiteFormController.success()
 
 ->  /admin admin.Routes
 

@@ -1,0 +1,27 @@
+@(form: Form[models.beans.SiteBean])
+@implicitField = @{ views.html.helper.FieldConstructor(views.html.base.helper.bootstrapStaticControlField.f) }
+@main("サイト登録", null) {
+
+<div class="container">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">サイト登録</h3>
+  </div>
+  <div class="panel-body">
+    表示内容を確認して、「登録する」をクリックして下さい。
+  </div>
+</div>
+<div class="row">
+@helper.form(action = controllers.site.routes.SiteFormController.submit(), 'class -> "form-horizontal", 'role -> "form") {
+@helper.input(form("title")) { (id, name, value, args) =>
+    <input type="hidden" name="@name" id="@id" value="@value" @toHtmlArgs(args)>
+}
+@helper.input(form("url")) { (id, name, value, args) =>
+    <input type="hidden" name="@name" id="@id" value="@value" @toHtmlArgs(args)>
+}
+<button type="submit" class="btn btn-info btn-lg btn-block">登録する</button>
+}
+</div>
+</div>
+
+}

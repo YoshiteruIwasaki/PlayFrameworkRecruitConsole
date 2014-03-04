@@ -38,4 +38,9 @@ public class SiteService {
 		return pagingList.getTotalPageCount();
 	}
 
+	public static boolean hasSameSiteByUrl(String url) {
+	    int count = find.where().eq("url", url).findRowCount();
+	    return (count != 0);
+	}
+
 }

@@ -29,4 +29,9 @@ public class SiteBeanService extends SiteService {
 		bean.thumbUrl = ApplicationConfigUtils.HEARTRAILS_URL + site.url;
 		return bean;
 	}
+
+	public static boolean hasSameSiteBeanByUrl(String url) {
+		return hasSameSiteByUrl(url);
+
+	}
 }
