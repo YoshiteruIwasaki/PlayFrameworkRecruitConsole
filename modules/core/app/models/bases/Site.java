@@ -5,7 +5,6 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.Version;
 
 import play.data.validation.Constraints.MaxLength;
@@ -27,7 +26,7 @@ public class Site extends Model {
 
 	@Required(message = "タイトルをご入力ください。")
 	@Column(nullable = false)
-	@Lob
+	@MaxLength(value=255, message="タイトルは255文字以下でご入力ください。")
 	public String title;
 
 	@Required(message = "URLをご入力ください。")
