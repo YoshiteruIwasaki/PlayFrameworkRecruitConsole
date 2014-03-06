@@ -21,6 +21,7 @@ public class SiteBean extends Site {
 		Site site = new Site();
 		site.title = this.title;
 		site.url = this.url;
+		site.category = this.category;
 		site.save();
 	}
 

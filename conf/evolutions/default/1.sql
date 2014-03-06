@@ -3,10 +3,21 @@
 
 # --- !Ups
 
+create table category (
+  category_id               bigint auto_increment not null,
+  title                     varchar(255) not null,
+  sort_order                integer not null,
+  create_date               datetime not null,
+  update_date               datetime not null,
+  constraint uq_category_sort_order unique (sort_order),
+  constraint pk_category primary key (category_id))
+;
+
 create table site (
   site_id                   bigint auto_increment not null,
   title                     varchar(255) not null,
   url                       varchar(191) not null,
+  category_id               bigint,
   create_date               datetime not null,
   update_date               datetime not null,
   constraint uq_site_url unique (url),
@@ -23,12 +34,16 @@ create table user (
   constraint pk_user primary key (user_id))
 ;
 
+alter table site add constraint fk_site_category_1 foreign key (category_id) references category (category_id) on delete restrict on update restrict;
+create index ix_site_category_1 on site (category_id);
 
 
 
 # --- !Downs
 
 SET FOREIGN_KEY_CHECKS=0;
+
+drop table category;
 
 drop table site;
 

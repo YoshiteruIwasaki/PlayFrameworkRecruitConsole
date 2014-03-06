@@ -26,6 +26,7 @@ public class SiteBeanService extends SiteService {
 		bean.title = site.title;
 		bean.updateDate = site.updateDate;
 		bean.url = site.url;
+		bean.category = site.category;
 		bean.thumbUrl = ApplicationConfigUtils.HEARTRAILS_URL + site.url;
 		return bean;
 	}
