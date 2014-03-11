@@ -59,3 +59,33 @@ $(function() {
 		}
 	});
 });
+
+$('#submit-btn').click(function() {
+	var btn = $(this);
+	btn.button('loading');
+});
+
+$('#InputUrl').focusout(function() {
+	var site = $(this);
+	if (site.val() != "") {
+		var data = {
+			url : site.val()
+		};
+		$.ajax({
+			type : "POST",
+			url : "/api/site",
+			data : data,
+			dataType : "json",
+			success : function(data) {
+				if (data != "") {
+					console.log(data);
+					$('#InputTitle').val(data.title);
+					//data.company;
+				}
+			},
+			error : function(data) {
+				console.log(data);
+			}
+		});
+	}
+});

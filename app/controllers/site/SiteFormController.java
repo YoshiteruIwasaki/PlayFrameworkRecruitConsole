@@ -1,12 +1,12 @@
 package controllers.site;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
-
-import org.apache.commons.lang3.StringUtils;
 
 import models.beans.CategoryBean;
 import models.beans.SiteBean;
+
+import org.apache.commons.lang3.StringUtils;
+
 import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Result;

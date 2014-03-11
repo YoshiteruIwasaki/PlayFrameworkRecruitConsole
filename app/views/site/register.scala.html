@@ -25,9 +25,9 @@
 }
 @helper.form(action = controllers.site.routes.SiteFormController.confirm(), 'role -> "form") {
 @helper.inputText(form("title"), 'id -> "InputTitle", 'class -> "form-control", 'placeholder -> "タイトル" )
-@helper.inputText(form("url"), 'id -> "InputUrl", 'class -> "form-control", 'placeholder -> "URL" )
+@helper.inputText(form("url"), 'id -> "InputUrl", 'class -> "form-control input-lg", 'placeholder -> "URL" )
 @helper.select(form("category.category_id"),options=categoryList.toSeq,  'class -> "form-control")
-<button type="submit" class="btn btn-info btn-lg btn-block">確認する</button>
+<button type="submit" class="btn btn-info btn-lg btn-block" data-loading-text="送信中..." id="submit-btn" >確認する</button>
 }
 </div>
 </div>
