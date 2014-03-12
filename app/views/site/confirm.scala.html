@@ -13,16 +13,19 @@
 </div>
 <div class="row">
 @helper.form(action = controllers.site.routes.SiteFormController.submit(), 'class -> "form-horizontal", 'role -> "form") {
-@helper.input(form("title")) { (id, name, value, args) =>
+@helper.input(form("category.category_id"), '_text -> categoryBean.title ) { (id, name, value, args ) =>
     <input type="hidden" name="@name" id="@id" value="@value" @toHtmlArgs(args)>
 }
 @helper.input(form("url")) { (id, name, value, args) =>
     <input type="hidden" name="@name" id="@id" value="@value" @toHtmlArgs(args)>
 }
-@helper.input(form("category.category_id"), '_text -> categoryBean.title ) { (id, name, value, args ) =>
+@helper.input(form("title")) { (id, name, value, args) =>
     <input type="hidden" name="@name" id="@id" value="@value" @toHtmlArgs(args)>
 }
-<button type="submit" class="btn btn-info btn-lg btn-block">登録する</button>
+@helper.input(form("companyName")) { (id, name, value, args) =>
+    <input type="hidden" name="@name" id="@id" value="@value" @toHtmlArgs(args)>
+}
+<button type="submit" class="btn btn-info btn-lg btn-block" data-loading-text="送信中..." id="submit-btn">登録する</button>
 }
 </div>
 </div>

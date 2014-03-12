@@ -42,6 +42,10 @@ public class Site extends Model {
 	@JoinColumn(name = "category_id", nullable = false)
 	public Category category;
 
+	@ManyToOne
+	@JoinColumn(name = "company_id", nullable = true)
+	public Company company;
+
 	@CreatedTimestamp
 	public Date createDate;
 

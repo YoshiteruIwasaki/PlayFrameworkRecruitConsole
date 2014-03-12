@@ -1,17 +1,19 @@
 package controllers.site;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
+
+import models.beans.CategoryBean;
+import models.beans.CompanyBean;
+import models.beans.SiteBean;
 
 import org.apache.commons.lang3.StringUtils;
 
-import models.beans.CategoryBean;
-import models.beans.SiteBean;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Result;
 import services.bases.CategoryService;
 import services.beans.CategoryBeanService;
+import services.beans.CompanyBeanService;
 import controllers.base.BaseController;
 
 public class SiteFormController extends BaseController {
@@ -57,6 +59,15 @@ public class SiteFormController extends BaseController {
 		if (!StringUtils.isEmpty(categoryId)) {
 			bean.category = CategoryService.getCategory(Long
 					.parseLong(categoryId));
+		}
+		if(!StringUtils.isEmpty(bean.companyName)){
+			CompanyBean company = CompanyBeanService.getCompanyBeanByName(bean.companyName);
+			if(company == null){
+				company = new CompanyBean();
+				company.title = bean.companyName;
+				company.save();
+				bean.company = company.getCompany();
+			}
 		}
 
 		bean.save();

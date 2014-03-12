@@ -11,6 +11,7 @@
     <meta name="author" content="">
     <title>@titleText(title)</title>
     <link rel='shortcut icon' type='image/png' href='@routes.Assets.at("images/favicon.png")'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway+Dots' rel='stylesheet' type='text/css'>
     <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.css"))'>
     <link rel='stylesheet' href='@routes.Assets.at("css/style.css")'>
     <link rel='stylesheet' href='@routes.Assets.at("preloader/css/preloader.css")'>
@@ -35,16 +36,24 @@
           </button>
           <a class="navbar-brand" href="/">@{ApplicationSiteConfigUtils.SITE_TITLE}</a>
         </div>
+        <div class="navbar-collapse collapse">
+        <div class="navbar-right">
+        	<a class="btn btn-default" href="@controllers.site.routes.SiteFormController.register()" role="button" style="margin-top:8px;">登録</a>
+        	</div>
+        </div><!--/.navbar-collapse -->
       </div>
     </div>
 
     <div class="wrapper">
         @content
     </div>
-    <div class="container">
+
+    <div id="footer">
+      <div class="container">
       <footer>
         <p>&copy; Company 2014</p>
       </footer>
+      </div>
     </div>
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))'></script>
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.js"))'></script>

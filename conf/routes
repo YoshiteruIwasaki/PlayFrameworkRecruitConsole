@@ -2,16 +2,19 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-GET     /                           controllers.Application.index()
-GET     /listAjax/:page                           controllers.ajax.SiteListAjaxController.index(page:Integer)
-# Form
-GET     /register                           controllers.site.SiteFormController.register()
-POST     /confirm                           controllers.site.SiteFormController.confirm()
-POST     /submit                           controllers.site.SiteFormController.submit()
-GET     /success                           controllers.site.SiteFormController.success()
+GET    /                 controllers.Application.index()
+GET    /listAjax/:page   controllers.ajax.SiteListAjaxController.index(page:Integer)
+# API
+POST    /api/site         controllers.api.SiteInfoApiController.index()
 
-->  /admin admin.Routes
+# Form
+GET    /register         controllers.site.SiteFormController.register()
+POST   /confirm          controllers.site.SiteFormController.confirm()
+POST   /submit           controllers.site.SiteFormController.submit()
+GET    /success          controllers.site.SiteFormController.success()
+
+->     /admin            admin.Routes
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
-GET     /webjars/*file              controllers.WebJarAssets.at(file)
+GET    /assets/*file     controllers.Assets.at(path="/public", file)
+GET    /webjars/*file    controllers.WebJarAssets.at(file)

@@ -13,11 +13,20 @@ create table category (
   constraint pk_category primary key (category_id))
 ;
 
+create table company (
+  company_id                bigint auto_increment not null,
+  title                     varchar(255) not null,
+  create_date               datetime not null,
+  update_date               datetime not null,
+  constraint pk_company primary key (company_id))
+;
+
 create table site (
   site_id                   bigint auto_increment not null,
   title                     varchar(255) not null,
   url                       varchar(191) not null,
   category_id               bigint,
+  company_id                bigint,
   create_date               datetime not null,
   update_date               datetime not null,
   constraint uq_site_url unique (url),
@@ -36,6 +45,8 @@ create table user (
 
 alter table site add constraint fk_site_category_1 foreign key (category_id) references category (category_id) on delete restrict on update restrict;
 create index ix_site_category_1 on site (category_id);
+alter table site add constraint fk_site_company_2 foreign key (company_id) references company (company_id) on delete restrict on update restrict;
+create index ix_site_company_2 on site (company_id);
 
 
 
@@ -44,6 +55,8 @@ create index ix_site_category_1 on site (category_id);
 SET FOREIGN_KEY_CHECKS=0;
 
 drop table category;
+
+drop table company;
 
 drop table site;
 

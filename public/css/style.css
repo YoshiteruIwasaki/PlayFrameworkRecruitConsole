@@ -1,16 +1,66 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+	position: relative;
+	min-height: 100%;
+}
+
 body {
-  padding-top: 50px;
-  padding-bottom: 20px;
+	padding-top: 50px;
+	/* Margin bottom by footer height */
+	margin-bottom: 60px;
 }
 
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
 .fixpreload {
-    display: block;
-    width: 350px;
-    height: 263px;
+	display: block;
+	width: 350px;
+	height: 263px;
 }
 
-.wrapper{
-  margin-top:20px;
-  margin-bottom:20px;
+#footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	/* Set the fixed height of the footer here */
+	height: 60px;
+	background-color: #f5f5f5;
+}
+
+#footer>.container {
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+.wrapper {
+	margin-top: 100px;
+}
+
+footer {
+	margin: 20px 0;
+}
+
+.navbar-inverse {
+	background-color: #FFF;
+	border-color: #FFF;
+}
+
+.navbar-brand {
+	text-transform: uppercase;
+	font-family:'Raleway Dots', cursive;
+	font-size: 64px;
+	line-height: 68px;
+	height: 100px;
+}
+
+.navbar-inverse .navbar-brand {
+	color: #999;
+}
+
+.navbar-inverse .navbar-brand:hover,.navbar-inverse .navbar-brand:focus
+	{
+	color: #428bca;
 }
