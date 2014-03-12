@@ -12,8 +12,6 @@ public class SiteUtil {
 		string = string.replaceAll("\\-", " ");
 		string = string.replaceAll("\\/", " ");
 
-
-
 		String[] array = string.split(" ");
 		if (array.length > 0) {
 			for (String word : array) {

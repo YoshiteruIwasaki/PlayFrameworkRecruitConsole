@@ -21,11 +21,12 @@ public class CategoryBeanService extends CategoryService {
 
 	public static CategoryBean getCategoryBean(Long categoryId) {
 		Category category = getCategory(categoryId);
-		CategoryBean categoryBean = new CategoryBean();
 		if (category != null) {
+			CategoryBean categoryBean = new CategoryBean();
 			categoryBean = setCategoryBean(category);
+			return categoryBean;
 		}
-		return categoryBean;
+		return null;
 	}
 
 	private static CategoryBean setCategoryBean(Category category) {

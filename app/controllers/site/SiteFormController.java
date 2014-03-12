@@ -3,17 +3,19 @@ package controllers.site;
 import java.util.LinkedHashMap;
 
 import models.CategoryBean;
-import models.CompanyBean;
-import models.SiteBean;
+import models.bases.Category;
+import models.bases.Company;
+import models.bases.Site;
+import models.form.SiteFormBean;
 
 import org.apache.commons.lang3.StringUtils;
 
-import play.data.DynamicForm;
 import play.data.Form;
+import play.db.ebean.Transactional;
 import play.mvc.Result;
 import services.CategoryBeanService;
-import services.CompanyBeanService;
 import services.bases.CategoryService;
+import services.bases.CompanyService;
 import controllers.base.BaseController;
 
 public class SiteFormController extends BaseController {
@@ -21,21 +23,21 @@ public class SiteFormController extends BaseController {
 	public static Result register() {
 		LinkedHashMap<String, String> categoryList = CategoryBeanService
 				.getCategoryAllMap();
-		Form<SiteBean> siteForm = Form.form(SiteBean.class);
+		Form<SiteFormBean> siteForm = Form.form(SiteFormBean.class);
 		return ok(views.html.site.register
 				.render(siteForm, categoryList, false));
 	}
 
 	public static Result confirm() {
-		Form<SiteBean> siteForm = Form.form(SiteBean.class).bindFromRequest();
+		Form<SiteFormBean> siteForm = Form.form(SiteFormBean.class)
+				.bindFromRequest();
 		if (siteForm.hasErrors()) {
 			LinkedHashMap<String, String> categoryList = CategoryBeanService
 					.getCategoryAllMap();
 			return ok(views.html.site.register.render(siteForm, categoryList,
 					true));
 		}
-		DynamicForm requestData = Form.form().bindFromRequest();
-		String categoryId = requestData.get("category.category_id");
+		String categoryId = siteForm.data().get("category.category_id");
 		CategoryBean categoryBean = new CategoryBean();
 		if (!StringUtils.isEmpty(categoryId)) {
 			categoryBean = CategoryBeanService.getCategoryBean(Long
@@ -44,33 +46,40 @@ public class SiteFormController extends BaseController {
 		return ok(views.html.site.confirm.render(siteForm, categoryBean));
 	}
 
+	@Transactional
 	public static Result submit() {
-		Form<SiteBean> siteForm = Form.form(SiteBean.class).bindFromRequest();
+		Form<SiteFormBean> siteForm = Form.form(SiteFormBean.class)
+				.bindFromRequest();
 		if (siteForm.hasErrors()) {
 			LinkedHashMap<String, String> categoryList = CategoryBeanService
 					.getCategoryAllMap();
 			return ok(views.html.site.register.render(siteForm, categoryList,
 					true));
 		}
-		SiteBean bean = siteForm.get();
+		SiteFormBean bean = siteForm.get();
 
-		DynamicForm requestData = Form.form().bindFromRequest();
-		String categoryId = requestData.get("category.category_id");
+		Site site = Form.form(Site.class).bindFromRequest().get();
+
+		String categoryId = siteForm.data().get("category.category_id");
 		if (!StringUtils.isEmpty(categoryId)) {
-			bean.category = CategoryService.getCategory(Long
+			Category category = CategoryService.getCategory(Long
 					.parseLong(categoryId));
-		}
-		if(!StringUtils.isEmpty(bean.companyName)){
-			CompanyBean company = CompanyBeanService.getCompanyBeanByName(bean.companyName);
-			if(company == null){
-				company = new CompanyBean();
-				company.title = bean.companyName;
-				company.save();
-				bean.company = company.getCompany();
+			if (category != null) {
+				site.category = category;
 			}
 		}
 
-		bean.save();
+		if (!StringUtils.isEmpty(bean.companyName)) {
+			Company company = CompanyService.getCompanyByName(bean.companyName);
+			if (company == null) {
+				company = new Company();
+				company.title = bean.companyName;
+				company.save();
+				site.company = company;
+			}
+		}
+
+		site.save();
 		return redirect(controllers.site.routes.SiteFormController.success());
 	}
 

@@ -8,12 +8,14 @@ public class CompanyBeanService extends CompanyService {
 
 	public static CompanyBean getCompanyBean(Long CompanyId) {
 		Company Company = getCompany(CompanyId);
-		CompanyBean CompanyBean = new CompanyBean();
 		if (Company != null) {
+			CompanyBean CompanyBean = new CompanyBean();
 			CompanyBean = setCompanyBean(Company);
+			return CompanyBean;
 		}
-		return CompanyBean;
+		return null;
 	}
+
 	public static CompanyBean getCompanyBeanByName(String CompanyName) {
 		Company Company = getCompanyByName(CompanyName);
 		if (Company != null) {
@@ -23,6 +25,7 @@ public class CompanyBeanService extends CompanyService {
 		}
 		return null;
 	}
+
 	private static CompanyBean setCompanyBean(Company Company) {
 		CompanyBean bean = new CompanyBean();
 		bean.companyId = Company.companyId;
