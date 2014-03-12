@@ -21,6 +21,7 @@ public class SiteUtil {
 					return word;
 				}
 			}
+
 			return array[array.length - 1];
 		}
 		return "";
