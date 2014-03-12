@@ -1,11 +1,11 @@
-package services.beans;
+package services;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import models.CategoryBean;
 import models.bases.Category;
-import models.beans.CategoryBean;
 import services.bases.CategoryService;
 
 public class CategoryBeanService extends CategoryService {

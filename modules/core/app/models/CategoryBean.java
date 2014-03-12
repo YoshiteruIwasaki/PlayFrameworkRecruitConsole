@@ -1,4 +1,4 @@
-package models.beans;
+package models;
 
 import models.bases.Category;
 

@@ -2,10 +2,9 @@ package controllers;
 
 import java.util.List;
 
-import models.beans.SiteBean;
+import models.SiteBean;
 import play.mvc.Result;
-import services.beans.SiteBeanService;
-import utils.ApplicationSiteConfigUtils;
+import services.SiteBeanService;
 import controllers.base.BaseController;
 
 public class Application extends BaseController {

@@ -2,9 +2,9 @@ package controllers.ajax;
 
 import java.util.List;
 
-import models.beans.SiteBean;
+import models.SiteBean;
 import play.mvc.Result;
-import services.beans.SiteBeanService;
+import services.SiteBeanService;
 import controllers.base.BaseController;
 
 public class SiteListAjaxController extends BaseController {

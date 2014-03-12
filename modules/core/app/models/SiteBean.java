@@ -1,4 +1,4 @@
-package models.beans;
+package models;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,7 +8,7 @@ import java.util.Map;
 import models.bases.Site;
 import play.data.validation.Constraints.MaxLength;
 import play.data.validation.ValidationError;
-import services.beans.SiteBeanService;
+import services.SiteBeanService;
 import validator.base.unique.Unique;
 
 @Unique(modelClass = SiteBean.class, fields = { "url" }, message = "すでに同じURLが登録されています。")

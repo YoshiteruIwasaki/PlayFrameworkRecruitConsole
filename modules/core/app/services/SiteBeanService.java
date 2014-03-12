@@ -1,10 +1,10 @@
-package services.beans;
+package services;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import models.SiteBean;
 import models.bases.Site;
-import models.beans.SiteBean;
 import services.bases.SiteService;
 import utils.base.ApplicationConfigUtils;
 

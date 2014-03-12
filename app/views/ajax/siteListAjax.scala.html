@@ -1,4 +1,4 @@
-@(page: Integer, beanList: List[models.beans.SiteBean])
+@(page: Integer, beanList: List[models.SiteBean])
 <div class="row" id="list@page">
 	@if(beanList != null && beanList.size() > 0){
 	    @for(bean <- beanList){

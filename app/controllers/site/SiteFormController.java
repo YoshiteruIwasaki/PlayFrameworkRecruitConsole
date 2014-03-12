@@ -2,18 +2,18 @@ package controllers.site;
 
 import java.util.LinkedHashMap;
 
-import models.beans.CategoryBean;
-import models.beans.CompanyBean;
-import models.beans.SiteBean;
+import models.CategoryBean;
+import models.CompanyBean;
+import models.SiteBean;
 
 import org.apache.commons.lang3.StringUtils;
 
 import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Result;
+import services.CategoryBeanService;
+import services.CompanyBeanService;
 import services.bases.CategoryService;
-import services.beans.CategoryBeanService;
-import services.beans.CompanyBeanService;
 import controllers.base.BaseController;
 
 public class SiteFormController extends BaseController {

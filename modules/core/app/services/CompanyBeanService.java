@@ -1,7 +1,7 @@
-package services.beans;
+package services;
 
+import models.CompanyBean;
 import models.bases.Company;
-import models.beans.CompanyBean;
 import services.bases.CompanyService;
 
 public class CompanyBeanService extends CompanyService {
