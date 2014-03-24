@@ -1,11 +1,14 @@
 package controllers.site;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 
 import models.CategoryBean;
 import models.bases.Category;
 import models.bases.Company;
 import models.bases.Site;
+import models.bases.Tag;
+import models.bases.TagSiteMap;
 import models.form.SiteFormBean;
 
 import org.apache.commons.lang3.StringUtils;
@@ -14,8 +17,14 @@ import play.data.Form;
 import play.db.ebean.Transactional;
 import play.mvc.Result;
 import services.CategoryBeanService;
+import services.TagBeanService;
 import services.bases.CategoryService;
 import services.bases.CompanyService;
+import services.bases.TagService;
+import services.bases.TagSiteMapService;
+
+import com.avaje.ebean.Ebean;
+
 import controllers.base.BaseController;
 
 public class SiteFormController extends BaseController {
@@ -43,7 +52,12 @@ public class SiteFormController extends BaseController {
 			categoryBean = CategoryBeanService.getCategoryBean(Long
 					.parseLong(categoryId));
 		}
-		return ok(views.html.site.confirm.render(siteForm, categoryBean));
+
+		String tagBeanListString = TagBeanService.getTagListString(siteForm
+				.data().get("tagList"));
+
+		return ok(views.html.site.confirm.render(siteForm, categoryBean,
+				tagBeanListString));
 	}
 
 	@Transactional
@@ -80,6 +94,20 @@ public class SiteFormController extends BaseController {
 		}
 
 		site.save();
+		List<TagSiteMap> list = TagSiteMapService.getTagSiteMapListBySiste(site);
+		if(list != null){
+			Ebean.delete(list);
+		}
+
+		List<Tag> tagList = TagService.setTagList(siteForm.data().get(
+				"tagList"));
+		for (Tag tag : tagList) {
+			TagSiteMap tagSiteMap = new TagSiteMap();
+			tagSiteMap.site = site;
+			tagSiteMap.tag = tag;
+			tagSiteMap.save();
+		}
+
 		return redirect(controllers.site.routes.SiteFormController.success());
 	}
 

@@ -1,12 +1,16 @@
 package models.bases;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
 import play.data.validation.Constraints.MaxLength;
@@ -51,4 +55,7 @@ public class Site extends Model {
 
 	@Version
 	public Date updateDate;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "site")
+	public List<TagSiteMap> tagSiteMapList = new ArrayList<TagSiteMap>();
 }

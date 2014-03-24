@@ -1,5 +1,6 @@
 $(function() {
-	function hoverImg() {
+
+	$.hoverImg = function() {
 
 		$(document).on('mouseover', ".hover_img", function() {
 			var info = $(this).find("img");
@@ -19,10 +20,10 @@ $(function() {
 				'background' : 'none'
 			});
 		});
-	}
+	};
 
 	$("#list0").preloader();
-	hoverImg();
+	$.hoverImg();
 
 	$(window).bottom({
 		proximity : 0.5
@@ -49,7 +50,7 @@ $(function() {
 					// now that the ajax call is done, we can re-enable this
 					obj.data("loading", false);
 					$("#list" + page).preloader();
-					hoverImg();
+					$.hoverImg();
 				},
 
 				error : function(data) {
@@ -58,33 +59,4 @@ $(function() {
 			});
 		}
 	});
-});
-
-$('#submit-btn').click(function() {
-	var btn = $(this);
-	btn.button('loading');
-});
-
-$('#InputUrl').focusout(function() {
-	var site = $(this);
-	if (site.val() != "") {
-		var data = {
-			url : site.val()
-		};
-		$.ajax({
-			type : "POST",
-			url : "/api/site",
-			data : data,
-			dataType : "json",
-			success : function(data) {
-				if (data != "") {
-					$('#InputTitle').val(data.title);
-					$('#InputCompany').val(data.company);
-				}
-			},
-			error : function(data) {
-				console.log(data);
-			}
-		});
-	}
 });

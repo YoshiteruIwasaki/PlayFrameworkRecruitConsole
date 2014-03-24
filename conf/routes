@@ -6,6 +6,7 @@ GET    /                 controllers.Application.index()
 GET    /listAjax/:page   controllers.ajax.SiteListAjaxController.index(page:Integer)
 # API
 POST    /api/site         controllers.api.SiteInfoApiController.index()
+POST    /json/tag         controllers.json.TagListJsonController.index()
 
 # Form
 GET    /register         controllers.site.SiteFormController.register()

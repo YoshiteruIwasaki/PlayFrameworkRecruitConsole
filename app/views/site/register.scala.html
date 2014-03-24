@@ -28,9 +28,14 @@
 @helper.inputText(form("url"), 'id -> "InputUrl", 'class -> "form-control input-lg", 'placeholder -> "URL" )
 @helper.inputText(form("title"), 'id -> "InputTitle", 'class -> "form-control", 'placeholder -> "タイトル" )
 @helper.inputText(form("companyName"), 'id -> "InputCompany", 'class -> "form-control", 'placeholder -> "会社名" )
+@helper.input(form("tagList"), 'id -> "InputTag", 'class -> "select form-control") { (id, name, value, args) =>
+    <input type="hidden" name="@name" id="@id" value="@value" @toHtmlArgs(args)>
+}
 <button type="submit" class="btn btn-info btn-lg btn-block" data-loading-text="送信中..." id="submit-btn" >確認する</button>
 }
 </div>
 </div>
 
+}{
+    <script type='text/javascript' src='@routes.Assets.at("js/site/form.js")'></script>
 }

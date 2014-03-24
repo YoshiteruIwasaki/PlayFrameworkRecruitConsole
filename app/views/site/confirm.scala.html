@@ -1,4 +1,4 @@
-@(form: Form[models.form.SiteFormBean], categoryBean: models.CategoryBean)
+@(form: Form[models.form.SiteFormBean], categoryBean: models.CategoryBean, tagBeanListString: String)
 @implicitField = @{ views.html.helper.FieldConstructor(views.html.base.helper.bootstrapStaticControlField.f) }
 @main("サイト登録", null) {
 
@@ -25,9 +25,15 @@
 @helper.input(form("companyName")) { (id, name, value, args) =>
     <input type="hidden" name="@name" id="@id" value="@value" @toHtmlArgs(args)>
 }
+@helper.input(form("tagList"), '_text -> tagBeanListString) { (id, name, value, args ) =>
+    <input type="hidden" name="@name" id="@id" value="@value" @toHtmlArgs(args)>
+}
 <button type="submit" class="btn btn-info btn-lg btn-block" data-loading-text="送信中..." id="submit-btn">登録する</button>
 }
 </div>
 </div>
 
+}{
+    <script type='text/javascript' src='@routes.Assets.at("js/site/form.js")'></script>
 }
+

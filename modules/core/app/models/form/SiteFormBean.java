@@ -31,4 +31,6 @@ public class SiteFormBean extends Site {
 		return errors;
 	}
 
+	public String tagList;
+
 }
