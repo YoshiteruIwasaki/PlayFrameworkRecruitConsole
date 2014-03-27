@@ -24,7 +24,7 @@
 </div>
 }
 @helper.form(action = controllers.site.routes.SiteFormController.confirm(), 'role -> "form") {
-@helper.select(form("category.category_id"),options=categoryList.toSeq,  'class -> "form-control")
+@helper.select(form("category.categoryId"),options=categoryList.toSeq,  'class -> "form-control")
 @helper.inputText(form("url"), 'id -> "InputUrl", 'class -> "form-control input-lg", 'placeholder -> "URL" )
 @helper.inputText(form("title"), 'id -> "InputTitle", 'class -> "form-control", 'placeholder -> "タイトル" )
 @helper.inputText(form("companyName"), 'id -> "InputCompany", 'class -> "form-control", 'placeholder -> "会社名" )

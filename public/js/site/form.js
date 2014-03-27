@@ -25,6 +25,13 @@ $(function() {
                 return {results: data, text: function(item) { return item.title; }};
             }
         },
+        initSelection : function (element, callback) {
+            var data = [];
+            $(element.val().split(",")).each(function () {
+                data.push({id: this, text: this});
+            });
+            callback(data);
+        },
         escapeMarkup: function (m) { return m; } // we do not want to escape markup since we are displaying html in results
 	});
 });

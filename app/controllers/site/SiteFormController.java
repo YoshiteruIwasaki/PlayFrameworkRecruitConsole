@@ -22,6 +22,7 @@ import services.bases.CategoryService;
 import services.bases.CompanyService;
 import services.bases.TagService;
 import services.bases.TagSiteMapService;
+import services.form.SiteFormBeanService;
 
 import com.avaje.ebean.Ebean;
 
@@ -37,6 +38,16 @@ public class SiteFormController extends BaseController {
 				.render(siteForm, categoryList, false));
 	}
 
+	public static Result edit(Long siteId) {
+		LinkedHashMap<String, String> categoryList = CategoryBeanService
+				.getCategoryAllMap();
+		SiteFormBean siteFormBean = SiteFormBeanService.getSiteFormBean(siteId);
+		Form<SiteFormBean> siteForm = Form.form(SiteFormBean.class);
+		siteForm = siteForm.fill(siteFormBean);
+		return ok(views.html.site.register
+				.render(siteForm, categoryList, false));
+	}
+
 	public static Result confirm() {
 		Form<SiteFormBean> siteForm = Form.form(SiteFormBean.class)
 				.bindFromRequest();
@@ -46,11 +57,10 @@ public class SiteFormController extends BaseController {
 			return ok(views.html.site.register.render(siteForm, categoryList,
 					true));
 		}
-		String categoryId = siteForm.data().get("category.category_id");
+		SiteFormBean bean = siteForm.get();
 		CategoryBean categoryBean = new CategoryBean();
-		if (!StringUtils.isEmpty(categoryId)) {
-			categoryBean = CategoryBeanService.getCategoryBean(Long
-					.parseLong(categoryId));
+		if (bean.category != null) {
+			categoryBean = CategoryBeanService.getCategoryBean(bean.category.categoryId);
 		}
 
 		String tagBeanListString = TagBeanService.getTagListString(siteForm
@@ -74,33 +84,25 @@ public class SiteFormController extends BaseController {
 
 		Site site = Form.form(Site.class).bindFromRequest().get();
 
-		String categoryId = siteForm.data().get("category.category_id");
-		if (!StringUtils.isEmpty(categoryId)) {
-			Category category = CategoryService.getCategory(Long
-					.parseLong(categoryId));
-			if (category != null) {
-				site.category = category;
-			}
-		}
-
 		if (!StringUtils.isEmpty(bean.companyName)) {
 			Company company = CompanyService.getCompanyByName(bean.companyName);
 			if (company == null) {
 				company = new Company();
 				company.title = bean.companyName;
 				company.save();
-				site.company = company;
 			}
+			site.company = company;
 		}
 
 		site.save();
-		List<TagSiteMap> list = TagSiteMapService.getTagSiteMapListBySiste(site);
-		if(list != null){
+		List<TagSiteMap> list = TagSiteMapService
+				.getTagSiteMapListBySiste(site);
+		if (list != null) {
 			Ebean.delete(list);
 		}
 
-		List<Tag> tagList = TagService.setTagList(siteForm.data().get(
-				"tagList"));
+		List<Tag> tagList = TagService.setTagList(siteForm.data()
+				.get("tagList"));
 		for (Tag tag : tagList) {
 			TagSiteMap tagSiteMap = new TagSiteMap();
 			tagSiteMap.site = site;
