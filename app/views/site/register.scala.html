@@ -1,15 +1,19 @@
-@(form: Form[models.form.SiteFormBean], categoryList: Map[String, String], showError:Boolean)
+@(form: Form[models.form.SiteFormBean], categoryList: Map[String, String], showError:Boolean, isNew:Boolean)
+@import _root_.views.html.base.helper._
+@import play.i18n._
 @implicitField = @{ views.html.helper.FieldConstructor(views.html.base.helper.bootstrapField.f) }
-@main("サイト登録", null) {
+@main(if(isNew){"サイト登録"}else{"サイト更新"},  null) {
 
 <div class="container">
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">サイト登録</h3>
+    <h3 class="panel-title">サイト@if(isNew){登録}else{更新}</h3>
   </div>
+  @if(isNew){
   <div class="panel-body">
     URLを入力して、「確認する」をクリックして下さい。
   </div>
+  }
 </div>
 <div class="row">
 @if(showError && form.hasErrors) {
@@ -24,8 +28,20 @@
 </div>
 }
 @helper.form(action = controllers.site.routes.SiteFormController.confirm(), 'role -> "form") {
+@inputHidden(form("siteId"))
+@inputHidden(form("isNew"))
 @helper.select(form("category.categoryId"),options=categoryList.toSeq,  'class -> "form-control")
+@if(form.field("isNew").value()=="true"){
 @helper.inputText(form("url"), 'id -> "InputUrl", 'class -> "form-control input-lg", 'placeholder -> "URL" )
+}else{
+<div class="form-group">
+    <label class="control-label">@Messages.get(form.field("url").name())</label>
+    	<div>
+     	 <p class="form-control-static">@form.field("url").value()
+<input type="hidden" name="@form.field("url").name()" value="@form.field("url").value()"/></p>
+    	</div>
+</div>
+}
 @helper.inputText(form("title"), 'id -> "InputTitle", 'class -> "form-control", 'placeholder -> "タイトル" )
 @helper.inputText(form("companyName"), 'id -> "InputCompany", 'class -> "form-control", 'placeholder -> "会社名" )
 @helper.input(form("tagList"), 'id -> "InputTag", 'class -> "select form-control") { (id, name, value, args) =>

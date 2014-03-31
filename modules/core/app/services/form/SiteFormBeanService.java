@@ -16,6 +16,7 @@ public class SiteFormBeanService extends SiteService {
 		bean.title = site.title;
 		bean.updateDate = site.updateDate;
 		bean.url = site.url;
+		bean.isNew = false;
 		bean.category = site.category;
 		bean.company = site.company;
 		bean.companyName = site.company != null ? site.company.title : "";

@@ -4,7 +4,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 import models.CategoryBean;
-import models.bases.Category;
 import models.bases.Company;
 import models.bases.Site;
 import models.bases.Tag;
@@ -18,7 +17,6 @@ import play.db.ebean.Transactional;
 import play.mvc.Result;
 import services.CategoryBeanService;
 import services.TagBeanService;
-import services.bases.CategoryService;
 import services.bases.CompanyService;
 import services.bases.TagService;
 import services.bases.TagSiteMapService;
@@ -34,8 +32,11 @@ public class SiteFormController extends BaseController {
 		LinkedHashMap<String, String> categoryList = CategoryBeanService
 				.getCategoryAllMap();
 		Form<SiteFormBean> siteForm = Form.form(SiteFormBean.class);
-		return ok(views.html.site.register
-				.render(siteForm, categoryList, false));
+		SiteFormBean bean = new SiteFormBean();
+		bean.isNew = true;
+		siteForm = siteForm.fill(bean);
+		return ok(views.html.site.register.render(siteForm, categoryList,
+				false, true));
 	}
 
 	public static Result edit(Long siteId) {
@@ -44,43 +45,44 @@ public class SiteFormController extends BaseController {
 		SiteFormBean siteFormBean = SiteFormBeanService.getSiteFormBean(siteId);
 		Form<SiteFormBean> siteForm = Form.form(SiteFormBean.class);
 		siteForm = siteForm.fill(siteFormBean);
-		return ok(views.html.site.register
-				.render(siteForm, categoryList, false));
+		return ok(views.html.site.register.render(siteForm, categoryList,
+				false, false));
 	}
 
 	public static Result confirm() {
 		Form<SiteFormBean> siteForm = Form.form(SiteFormBean.class)
 				.bindFromRequest();
+		SiteFormBean bean = siteForm.get();
 		if (siteForm.hasErrors()) {
 			LinkedHashMap<String, String> categoryList = CategoryBeanService
 					.getCategoryAllMap();
 			return ok(views.html.site.register.render(siteForm, categoryList,
-					true));
+					true, bean.isNew));
 		}
-		SiteFormBean bean = siteForm.get();
 		CategoryBean categoryBean = new CategoryBean();
 		if (bean.category != null) {
-			categoryBean = CategoryBeanService.getCategoryBean(bean.category.categoryId);
+			categoryBean = CategoryBeanService
+					.getCategoryBean(bean.category.categoryId);
 		}
 
 		String tagBeanListString = TagBeanService.getTagListString(siteForm
 				.data().get("tagList"));
 
 		return ok(views.html.site.confirm.render(siteForm, categoryBean,
-				tagBeanListString));
+				tagBeanListString, bean.isNew));
 	}
 
 	@Transactional
 	public static Result submit() {
 		Form<SiteFormBean> siteForm = Form.form(SiteFormBean.class)
 				.bindFromRequest();
+		SiteFormBean bean = siteForm.get();
 		if (siteForm.hasErrors()) {
 			LinkedHashMap<String, String> categoryList = CategoryBeanService
 					.getCategoryAllMap();
 			return ok(views.html.site.register.render(siteForm, categoryList,
-					true));
+					true,bean.isNew));
 		}
-		SiteFormBean bean = siteForm.get();
 
 		Site site = Form.form(Site.class).bindFromRequest().get();
 
@@ -93,8 +95,12 @@ public class SiteFormController extends BaseController {
 			}
 			site.company = company;
 		}
+		if (bean.isNew) {
+			site.save();
+		} else {
+			site.update();
+		}
 
-		site.save();
 		List<TagSiteMap> list = TagSiteMapService
 				.getTagSiteMapListBySiste(site);
 		if (list != null) {
@@ -109,11 +115,14 @@ public class SiteFormController extends BaseController {
 			tagSiteMap.tag = tag;
 			tagSiteMap.save();
 		}
+		flash("isNew", String.valueOf(bean.isNew));
 
 		return redirect(controllers.site.routes.SiteFormController.success());
 	}
 
 	public static Result success() {
-		return ok(views.html.site.success.render(""));
+		String message = flash("isNew");
+		boolean isNew = Boolean.valueOf(message);
+		return ok(views.html.site.success.render(isNew));
 	}
 }

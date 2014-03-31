@@ -19,9 +19,11 @@ public class SiteFormBean extends Site {
 	@MaxLength(value = 255, message = "会社名は255文字以下でご入力ください。")
 	public String companyName;
 
+	public boolean isNew;
+
 	public Map<String, List<ValidationError>> validate() {
 		Map<String, List<ValidationError>> errors = null;
-		if (SiteBeanService.hasSameSiteBeanByUrl(url)) {
+		if (isNew && SiteBeanService.hasSameSiteBeanByUrl(url)) {
 			errors = new HashMap<String, List<ValidationError>>();
 			List<ValidationError> lists = new ArrayList<ValidationError>();
 			lists.add(new ValidationError("url", "すでに同じURLが登録されています。",

@@ -1,14 +1,14 @@
-@(message: String)
+@(isNew: Boolean)
 
-@main("サイト登録", null) {
+@main(if(isNew){"サイト登録"}else{"サイト更新"}, null) {
 
 <div class="container">
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">サイト登録</h3>
+    <h3 class="panel-title">サイト@if(isNew){登録}else{更新}</h3>
   </div>
   <div class="panel-body">
-    サイトの登録が完了しました。
+    サイトの@if(isNew){登録}else{更新}が完了しました。
   </div>
 </div>
 </div>

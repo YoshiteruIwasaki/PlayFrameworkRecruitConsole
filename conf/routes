@@ -10,6 +10,7 @@ POST    /json/tag         controllers.json.TagListJsonController.index()
 
 # Form
 GET    /register         controllers.site.SiteFormController.register()
+GET    /edit/:id         controllers.site.SiteFormController.edit(id: Long)
 POST   /confirm          controllers.site.SiteFormController.confirm()
 POST   /submit           controllers.site.SiteFormController.submit()
 GET    /success          controllers.site.SiteFormController.success()

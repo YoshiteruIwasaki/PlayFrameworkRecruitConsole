@@ -93,11 +93,15 @@ public class TagBeanService extends TagService {
 
 	public static String getTagListString(String string) {
 		ArrayList<TagBean> arrayList = getTagBeanList(string);
-		StringBuilder builder = new StringBuilder();
-		for (TagBean bean : arrayList) {
-			builder.append(bean.title).append(",");
+		String result = "";
+		if (arrayList.size() > 0) {
+			StringBuilder builder = new StringBuilder();
+			for (TagBean bean : arrayList) {
+				builder.append(bean.title).append(",");
+			}
+			result = builder.substring(0, builder.length() - 1);
 		}
-		return builder.substring(0, builder.length() - 1);
+		return result;
 	}
 
 }

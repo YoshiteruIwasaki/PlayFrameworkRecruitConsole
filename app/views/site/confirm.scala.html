@@ -1,18 +1,21 @@
-@(form: Form[models.form.SiteFormBean], categoryBean: models.CategoryBean, tagBeanListString: String)
+@(form: Form[models.form.SiteFormBean], categoryBean: models.CategoryBean, tagBeanListString: String, isNew:Boolean)
+@import _root_.views.html.base.helper._
 @implicitField = @{ views.html.helper.FieldConstructor(views.html.base.helper.bootstrapStaticControlField.f) }
-@main("サイト登録", null) {
+@main(if(isNew){"サイト登録"}else{"サイト更新"}, null) {
 
 <div class="container">
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">サイト登録</h3>
+    <h3 class="panel-title">サイト@if(isNew){登録}else{更新}</h3>
   </div>
   <div class="panel-body">
-    表示内容を確認して、「登録する」をクリックして下さい。
+    表示内容を確認して、「@if(isNew){登録}else{更新}する」をクリックして下さい。
   </div>
 </div>
 <div class="row">
 @helper.form(action = controllers.site.routes.SiteFormController.submit(), 'class -> "form-horizontal", 'role -> "form") {
+@inputHidden(form("siteId"))
+@inputHidden(form("isNew"))
 @helper.input(form("category.categoryId"), '_text -> categoryBean.title ) { (id, name, value, args ) =>
     <input type="hidden" name="@name" id="@id" value="@value" @toHtmlArgs(args)>
 }
@@ -28,7 +31,7 @@
 @helper.input(form("tagList"), '_text -> tagBeanListString) { (id, name, value, args ) =>
     <input type="hidden" name="@name" id="@id" value="@value" @toHtmlArgs(args)>
 }
-<button type="submit" class="btn btn-info btn-lg btn-block" data-loading-text="送信中..." id="submit-btn">登録する</button>
+<button type="submit" class="btn btn-info btn-lg btn-block" data-loading-text="送信中..." id="submit-btn">@if(isNew){登録}else{更新}する</button>
 }
 </div>
 </div>
