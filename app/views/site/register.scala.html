@@ -9,11 +9,9 @@
   <div class="panel-heading">
     <h3 class="panel-title">サイト@if(isNew){登録}else{更新}</h3>
   </div>
-  @if(isNew){
   <div class="panel-body">
-    URLを入力して、「確認する」をクリックして下さい。
+    必須項目を入力して、「確認する」をクリックして下さい。
   </div>
-  }
 </div>
 <div class="row">
 @if(showError && form.hasErrors) {

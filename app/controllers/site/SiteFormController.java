@@ -12,6 +12,7 @@ import models.form.SiteFormBean;
 
 import org.apache.commons.lang3.StringUtils;
 
+import play.data.DynamicForm;
 import play.data.Form;
 import play.db.ebean.Transactional;
 import play.mvc.Result;
@@ -52,13 +53,15 @@ public class SiteFormController extends BaseController {
 	public static Result confirm() {
 		Form<SiteFormBean> siteForm = Form.form(SiteFormBean.class)
 				.bindFromRequest();
-		SiteFormBean bean = siteForm.get();
 		if (siteForm.hasErrors()) {
+			String isNewString = siteForm.data().get("isNew");
+			boolean isNew = Boolean.valueOf(isNewString);
 			LinkedHashMap<String, String> categoryList = CategoryBeanService
 					.getCategoryAllMap();
 			return ok(views.html.site.register.render(siteForm, categoryList,
-					true, bean.isNew));
+					true, isNew));
 		}
+		SiteFormBean bean = siteForm.get();
 		CategoryBean categoryBean = new CategoryBean();
 		if (bean.category != null) {
 			categoryBean = CategoryBeanService
@@ -76,14 +79,16 @@ public class SiteFormController extends BaseController {
 	public static Result submit() {
 		Form<SiteFormBean> siteForm = Form.form(SiteFormBean.class)
 				.bindFromRequest();
-		SiteFormBean bean = siteForm.get();
 		if (siteForm.hasErrors()) {
+			String isNewString = siteForm.data().get("isNew");
+			boolean isNew = Boolean.valueOf(isNewString);
 			LinkedHashMap<String, String> categoryList = CategoryBeanService
 					.getCategoryAllMap();
 			return ok(views.html.site.register.render(siteForm, categoryList,
-					true,bean.isNew));
+					true, isNew));
 		}
 
+		SiteFormBean bean = siteForm.get();
 		Site site = Form.form(Site.class).bindFromRequest().get();
 
 		if (!StringUtils.isEmpty(bean.companyName)) {

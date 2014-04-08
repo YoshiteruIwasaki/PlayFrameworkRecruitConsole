@@ -28,6 +28,8 @@ public class SiteBeanService extends SiteService {
 		bean.url = site.url;
 		bean.category = site.category;
 		bean.thumbUrl = ApplicationConfigUtils.HEARTRAILS_URL + site.url;
+		bean.company = site.company;
+		bean.tagSiteMapList = site.tagSiteMapList;
 		return bean;
 	}
 
@@ -35,4 +37,14 @@ public class SiteBeanService extends SiteService {
 		return hasSameSiteByUrl(url);
 
 	}
+
+	public static SiteBean getSiteBean(Long siteId) {
+		SiteBean bean = null;
+		Site site = getSite(siteId);
+		if (site != null) {
+			bean = setSiteBean(site);
+		}
+		return bean;
+	}
+
 }
