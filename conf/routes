@@ -4,6 +4,11 @@
 
 GET    /                 controllers.Application.index()
 GET    /listAjax/:page   controllers.ajax.SiteListAjaxController.index(page:Integer)
+GET    /detail/:id         controllers.site.SiteController.detail(id: Long)
+
+# List
+GET    /company/:id   controllers.site.SiteController.listByCompany(id: Long)
+
 # API
 POST    /api/site         controllers.api.SiteInfoApiController.index()
 POST    /json/tag         controllers.json.TagListJsonController.index()

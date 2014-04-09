@@ -38,6 +38,23 @@ public class SiteService {
 		return pagingList.getTotalPageCount();
 	}
 
+	public static PagingList<Site> getSiteCriteriaByCompany(Long companyId) {
+		return find.where().eq("company_id", companyId)
+				.orderBy().desc("createDate")
+				.findPagingList(ApplicationConfigUtils.MAX_PER_PAGE);
+	}
+
+	public static List<Site> getSiteResultListByCompany(Long companyId, Integer page) {
+		PagingList<Site> pagingList = getSiteCriteriaByCompany(companyId);
+		Page<Site> currentPage = pagingList.getPage(page);
+		return currentPage.getList();
+	}
+
+	public static Integer getSiteResultCountByCompany(Long companyId, Integer page) {
+		PagingList<Site> pagingList = getSiteCriteriaByCompany(companyId);
+		return pagingList.getTotalPageCount();
+	}
+
 	public static boolean hasSameSiteByUrl(String url) {
 	    int count = find.where().eq("url", url).findRowCount();
 	    return (count != 0);

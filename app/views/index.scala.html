@@ -8,7 +8,30 @@
 	    @for(bean <- beanList){
 		  <div class="col-sm-6 col-md-4">
 		  	<div class="thumbnail hover_img">
-		    	<a href="@{bean.url}" class="fixpreload"><img title="@{bean.title}" src="@{bean.thumbUrl}" alt="@{bean.url}" /></a>
+		    	<a href="@{bean.url}" class="fixpreload" target="_blank"><img title="@{bean.title}" src="@{bean.thumbUrl}" alt="@{bean.url}" /></a>
+		    	<span class="image_zoom"><a href="@controllers.site.routes.SiteController.detail(bean.siteId)" rel="prettyPhoto[portfolio1]">
+				<span class="fa-stack fa-lg">
+				  <i class="fa fa-square fa-stack-2x">
+				  </i>
+				  <i class="fa fa-search fa-stack-1x fa-inverse">
+				  </i>
+				</span>
+				</a>
+				</span>
+				<span class="image_link">
+				  <a href="@{bean.url}" target="_blank">
+				    <span class="fa-stack fa-lg">
+				      <i class="fa fa-square fa-stack-2x">
+				      </i>
+				      <i class="fa fa-link fa-stack-1x fa-inverse">
+				      </i>
+				    </span>
+				  </a>
+				</span>
+		    	<div class="caption caption-ext">
+		    	<h6 class="fix-height"><small>@{if(bean.company != null){bean.company.title}}&nbsp;</small></h6>
+        <p class="fix-height"><small><a href="@{bean.url}" target="_blank">@{bean.url}</a></small></p>
+      </div>
 		  	</div>
 		  </div>
 	    }

@@ -1,0 +1,34 @@
+@(bean: models.SiteBean)
+@import _root_.views.html.base.helper._
+@import play.i18n._
+@main(bean.title,  null) {
+
+<div class="container">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">@if(bean.company != null){<a href="@controllers.site.routes.SiteController.listByCompany(bean.company.companyId)">@bean.company.title</a>}&nbsp;<span class="label label-default">@if(bean.category != null){bean.category.title}</span></h3>
+  </div>
+  <div class="panel-body">
+    @{bean.title}
+    <p class="fix-height"><small><a href="@{bean.url}" target="_blank">@{bean.url}</a></small></p>
+  </div>
+</div>
+<div class="row">
+<div class="col-sm-6 col-md-4">
+		  	<div class="thumbnail hover_img">
+<a href="@{bean.url}" class="fixpreload" target="_blank"><img title="@{bean.title}" src="@{bean.thumbUrl}" alt="@{bean.url}" /></a>
+		    	<div class="caption caption-ext">
+<p>
+	@if(bean.tagSiteMapList != null && bean.tagSiteMapList.size() > 0){
+	    @for(map <- bean.tagSiteMapList){
+	    <span class="label label-primary">@{map.tag.title}</span>
+	    }
+	    }</p>
+      </div>
+</div>
+</div>
+</div>
+</div>
+
+}{
+}

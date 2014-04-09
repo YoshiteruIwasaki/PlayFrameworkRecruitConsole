@@ -18,6 +18,14 @@ public class SiteBeanService extends SiteService {
 		}
 		return list;
 	}
+	public static List<SiteBean> getSiteBeanResultListByCompany(Long companyId, Integer page) {
+		ArrayList<SiteBean> list = new ArrayList<SiteBean>();
+		List<Site> resultList = getSiteResultListByCompany(companyId, page);
+		for (Site site : resultList) {
+			list.add(setSiteBean(site));
+		}
+		return list;
+	}
 
 	public static SiteBean setSiteBean(Site site) {
 		SiteBean bean = new SiteBean();
@@ -28,6 +36,8 @@ public class SiteBeanService extends SiteService {
 		bean.url = site.url;
 		bean.category = site.category;
 		bean.thumbUrl = ApplicationConfigUtils.HEARTRAILS_URL + site.url;
+		bean.company = site.company;
+		bean.tagSiteMapList = site.tagSiteMapList;
 		return bean;
 	}
 
@@ -35,4 +45,14 @@ public class SiteBeanService extends SiteService {
 		return hasSameSiteByUrl(url);
 
 	}
+
+	public static SiteBean getSiteBean(Long siteId) {
+		SiteBean bean = null;
+		Site site = getSite(siteId);
+		if (site != null) {
+			bean = setSiteBean(site);
+		}
+		return bean;
+	}
+
 }

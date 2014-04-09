@@ -7,6 +7,7 @@ import java.util.Map;
 
 import models.bases.Site;
 import play.data.validation.Constraints.MaxLength;
+import play.data.validation.Constraints.Required;
 import play.data.validation.ValidationError;
 import services.SiteBeanService;
 import validator.base.unique.Unique;
@@ -16,6 +17,7 @@ public class SiteFormBean extends Site {
 
 	private static final long serialVersionUID = -8848680118627807080L;
 
+	@Required(message = "会社名を入力してください。")
 	@MaxLength(value = 255, message = "会社名は255文字以下でご入力ください。")
 	public String companyName;
 
