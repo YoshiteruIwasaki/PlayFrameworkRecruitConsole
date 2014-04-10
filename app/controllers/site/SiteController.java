@@ -18,9 +18,8 @@ public class SiteController extends BaseController {
 
 	public static Result listByCompany(Long companyId) {
 		CompanyBean companyBean = CompanyBeanService.getCompanyBean(companyId);
-		String title = companyBean != null ? companyBean.title : "";
 		List<SiteBean> resultList = SiteBeanService
 				.getSiteBeanResultListByCompany(companyId, 0);
-		return ok(views.html.site.list.render(title, resultList));
+		return ok(views.html.site.list.render(companyBean, resultList));
 	}
 }

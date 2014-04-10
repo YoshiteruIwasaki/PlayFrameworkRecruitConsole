@@ -35,7 +35,7 @@ $(function() {
 			obj.data("loading", true);
 			$("#loading").show();
 			$.ajax({
-				url : "/listAjax/" + $("#page").val(),
+				url : $("#listAjaxUrl").val() + $("#page").val(),
 				dataType : "html",
 				success : function(data) {
 					if (data == "") {

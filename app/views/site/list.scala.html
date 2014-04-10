@@ -1,11 +1,11 @@
-@(title: String, beanList: List[models.SiteBean])
+@(company: models.CompanyBean, beanList: List[models.SiteBean])
 
-@main(title, null) {
+@main(company.title, null) {
 
 <div class="container" id="listContainer">
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">@title:</h3>
+    <h3 class="panel-title">@{company.title}</h3>
   </div>
 </div>
 <div class="row" id="list0">
@@ -50,6 +50,7 @@
   <div id="loading" style="display:none;" class="alert alert-info">Loading...</div>
   <input type="hidden" id="hasNext" value="0" />
   <input type="hidden" id="page" value="1" />
+  <input type="hidden" id="listAjaxUrl" value="/listAjaxCompany/@{company.companyId}/" />
   </div>
 </div>
 
