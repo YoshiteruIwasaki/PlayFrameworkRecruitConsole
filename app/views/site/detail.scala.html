@@ -6,7 +6,8 @@
 <div class="container">
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">@if(bean.company != null){<a href="@controllers.site.routes.SiteController.listByCompany(bean.company.companyId)">@bean.company.title</a>}&nbsp;<span class="label label-default">@if(bean.category != null){bean.category.title}</span></h3>
+    <h3 class="panel-title">@if(bean.company != null){<a href="@controllers.site.routes.SiteController.listByCompany(bean.company.companyId)">@bean.company.title</a>}&nbsp;
+    @if(bean.category != null){<a href="@controllers.site.routes.SiteController.listByCategory(bean.category.categoryId)"><span class="label label-default">@bean.category.title</span></a>}</h3>
   </div>
   <div class="panel-body">
     @{bean.title}

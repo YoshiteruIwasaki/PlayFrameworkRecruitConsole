@@ -7,10 +7,12 @@ GET    /detail/:id         controllers.site.SiteController.detail(id: Long)
 
 # List
 GET    /company/:id   controllers.site.SiteController.listByCompany(id: Long)
+GET    /category/:id   controllers.site.SiteController.listByCategory(id: Long)
 
 # Ajax
 GET    /listAjax/:page   controllers.ajax.SiteListAjaxController.index(page:Integer)
 GET    /listAjaxCompany/:id/:page   controllers.ajax.SiteListAjaxController.listByCompany(id: Long, page:Integer)
+GET    /listAjaxCategory/:id/:page   controllers.ajax.SiteListAjaxController.listByCategory(id: Long, page:Integer)
 
 # API
 POST    /api/site         controllers.api.SiteInfoApiController.index()

@@ -18,7 +18,9 @@ public class SiteBeanService extends SiteService {
 		}
 		return list;
 	}
-	public static List<SiteBean> getSiteBeanResultListByCompany(Long companyId, Integer page) {
+
+	public static List<SiteBean> getSiteBeanResultListByCompany(Long companyId,
+			Integer page) {
 		ArrayList<SiteBean> list = new ArrayList<SiteBean>();
 		List<Site> resultList = getSiteResultListByCompany(companyId, page);
 		for (Site site : resultList) {
@@ -53,6 +55,16 @@ public class SiteBeanService extends SiteService {
 			bean = setSiteBean(site);
 		}
 		return bean;
+	}
+
+	public static List<SiteBean> getSiteBeanResultListByCategory(
+			Long categoryId, int page) {
+		ArrayList<SiteBean> list = new ArrayList<SiteBean>();
+		List<Site> resultList = getSiteResultListByCategory(categoryId, page);
+		for (Site site : resultList) {
+			list.add(setSiteBean(site));
+		}
+		return list;
 	}
 
 }
