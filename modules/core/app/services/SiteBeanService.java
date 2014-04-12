@@ -5,6 +5,7 @@ import java.util.List;
 
 import models.SiteBean;
 import models.bases.Site;
+import models.bases.TagSiteMap;
 import services.bases.SiteService;
 import utils.base.ApplicationConfigUtils;
 
@@ -18,7 +19,9 @@ public class SiteBeanService extends SiteService {
 		}
 		return list;
 	}
-	public static List<SiteBean> getSiteBeanResultListByCompany(Long companyId, Integer page) {
+
+	public static List<SiteBean> getSiteBeanResultListByCompany(Long companyId,
+			Integer page) {
 		ArrayList<SiteBean> list = new ArrayList<SiteBean>();
 		List<Site> resultList = getSiteResultListByCompany(companyId, page);
 		for (Site site : resultList) {
@@ -53,6 +56,26 @@ public class SiteBeanService extends SiteService {
 			bean = setSiteBean(site);
 		}
 		return bean;
+	}
+
+	public static List<SiteBean> getSiteBeanResultListByCategory(
+			Long categoryId, int page) {
+		ArrayList<SiteBean> list = new ArrayList<SiteBean>();
+		List<Site> resultList = getSiteResultListByCategory(categoryId, page);
+		for (Site site : resultList) {
+			list.add(setSiteBean(site));
+		}
+		return list;
+	}
+
+	public static List<SiteBean> getSiteBeanResultListByTag(Long tagId, int page) {
+		ArrayList<SiteBean> list = new ArrayList<SiteBean>();
+		List<TagSiteMap> resultList = TagSiteMapBeanService
+				.getTagSiteMapResultListByTag(tagId, page);
+		for (TagSiteMap map : resultList) {
+			list.add(setSiteBean(map.site));
+		}
+		return list;
 	}
 
 }

@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import org.apache.commons.lang3.StringUtils;
-
 import models.TagBean;
 import models.bases.Tag;
+
+import org.apache.commons.lang3.StringUtils;
+
 import services.bases.TagService;
 
 public class TagBeanService extends TagService {
@@ -37,6 +38,7 @@ public class TagBeanService extends TagService {
 		bean.title = tag.title;
 		bean.createDate = tag.createDate;
 		bean.updateDate = tag.updateDate;
+		bean.tagSiteMapList = tag.tagSiteMapList;
 		return bean;
 	}
 
