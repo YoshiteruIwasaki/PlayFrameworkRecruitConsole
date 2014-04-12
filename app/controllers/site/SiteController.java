@@ -28,16 +28,18 @@ public class SiteController extends BaseController {
 	}
 
 	public static Result listByCategory(Long categoryId) {
-		CategoryBean categoryBean = CategoryBeanService.getCategoryBean(categoryId);
+		CategoryBean categoryBean = CategoryBeanService
+				.getCategoryBean(categoryId);
 		List<SiteBean> resultList = SiteBeanService
 				.getSiteBeanResultListByCategory(categoryId, 0);
-		return ok(views.html.site.listByCategory.render(categoryBean, resultList));
+		return ok(views.html.site.listByCategory.render(categoryBean,
+				resultList));
 	}
 
 	public static Result listByTag(Long tagId) {
 		TagBean tagBean = TagBeanService.getTagBean(tagId);
-		List<SiteBean> resultList = SiteBeanService
-				.getSiteBeanResultListByTag(tagId, 0);
+		List<SiteBean> resultList = SiteBeanService.getSiteBeanResultListByTag(
+				tagId, 0);
 		return ok(views.html.site.listByTag.render(tagBean, resultList));
 	}
 }

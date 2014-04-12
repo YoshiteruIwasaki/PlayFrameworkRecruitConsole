@@ -30,11 +30,10 @@ public class SiteListAjaxController extends BaseController {
 	}
 
 	public static Result listByTag(Long tagId, int page) {
-		List<SiteBean> resultList = SiteBeanService
-				.getSiteBeanResultListByTag(tagId, page);
+		List<SiteBean> resultList = SiteBeanService.getSiteBeanResultListByTag(
+				tagId, page);
 		return resultList.size() == 0 ? ok("")
 				: ok(views.html.ajax.siteListAjax.render(page, resultList));
 	}
-
 
 }
