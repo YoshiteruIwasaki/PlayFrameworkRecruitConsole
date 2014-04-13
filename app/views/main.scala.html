@@ -40,6 +40,16 @@
           <a class="navbar-brand" href="/">@{ApplicationSiteConfigUtils.SITE_TITLE}</a>
         </div>
         <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">カテゴリ <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+              @for( category <- ViewUnitHelperUtils.getCategoryBeanAllList ){
+                <li><a href="@controllers.site.routes.SiteController.listByCategory(category.categoryId)">@{category.title}</a></li>
+                }
+              </ul>
+            </li>
+          </ul>
         <div class="navbar-right">
         	<a class="btn btn-default" href="@controllers.site.routes.SiteFormController.register()" role="button" style="margin-top:8px;">登録</a>
         	</div>
