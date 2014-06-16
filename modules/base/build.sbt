@@ -22,6 +22,7 @@ libraryDependencies ++= Seq(
   "net.sourceforge.nekohtml" % "nekohtml" % "1.9.20",
   "org.codehaus.jackson" % "jackson-jaxrs" % "1.9.13",
   "commons-validator" % "commons-validator" % "1.4.0",
-  "commons-beanutils" % "commons-beanutils" % "1.9.1")
+  "commons-beanutils" % "commons-beanutils" % "1.9.1",
+  "org.twitter4j" % "twitter4j" % "4.0.1")
 
 playJavaSettings
