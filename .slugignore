@@ -4,4 +4,5 @@ logs
 /RUNNING_PID
 /.settings
 /test
+/*.sql
 .DS_Store
