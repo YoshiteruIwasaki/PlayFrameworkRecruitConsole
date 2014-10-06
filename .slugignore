@@ -1,0 +1,7 @@
+logs
+/.classpath
+/.project
+/RUNNING_PID
+/.settings
+/test
+.DS_Store
