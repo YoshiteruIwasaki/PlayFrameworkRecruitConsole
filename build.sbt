@@ -33,7 +33,5 @@ lazy val base = project.in(file("modules/base")).dependsOn(common).aggregate(com
 
 lazy val core = project.in(file("modules/core")).dependsOn(common, base).aggregate(common, base)
 
-lazy val admin = project.in(file("modules/admin")).dependsOn(common, base, core).aggregate(common, base, core)
-
 lazy val main = project.in(file("."))
-    .dependsOn(common, base, core, admin).aggregate(common, base, core, admin)
+    .dependsOn(common, base, core).aggregate(common, base, core)
