@@ -4,7 +4,7 @@ libraryDependencies ++= Seq(
   "org.webjars" % "bootstrap" % "3.1.1",
   "org.webjars" % "font-awesome" % "4.0.3",
   "mysql" % "mysql-connector-java" % "5.1.29",
-  "org.postgresql" % "postgresql" % "9.3-1102-jdbc41",
+  "org.postgresql" % "postgresql" % "9.3-1102-jdbc4",
   "commons-codec" % "commons-codec" % "1.9",
   "net.sourceforge.nekohtml" % "nekohtml" % "1.9.20",
   "org.codehaus.jackson" % "jackson-jaxrs" % "1.9.13",
