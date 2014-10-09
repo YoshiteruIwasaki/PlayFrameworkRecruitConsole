@@ -7,11 +7,8 @@
   <classpathentry kind="lib" path="/Users/tyongeri/Documents/lib/play-2.2.3/framework/../repository/cache/org.webjars/webjars-play_2.10/jars/webjars-play_2.10-2.2.0.jar"/>
   <classpathentry kind="lib" path="/Users/tyongeri/Documents/lib/play-2.2.3/framework/../repository/cache/org.webjars/requirejs/jars/requirejs-2.1.8.jar"/>
   <classpathentry kind="lib" path="/Users/tyongeri/Documents/lib/play-2.2.3/framework/../repository/cache/org.webjars/webjars-locator/jars/webjars-locator-0.5.jar"/>
-  <classpathentry kind="lib" path="/Users/tyongeri/Documents/lib/play-2.2.3/framework/../repository/cache/org.webjars/bootstrap/jars/bootstrap-3.1.1.jar"/>
-  <classpathentry kind="lib" path="/Users/tyongeri/Documents/lib/play-2.2.3/framework/../repository/cache/org.webjars/jquery/jars/jquery-1.9.0.jar"/>
-  <classpathentry kind="lib" path="/Users/tyongeri/Documents/lib/play-2.2.3/framework/../repository/cache/org.webjars/font-awesome/jars/font-awesome-4.0.3.jar"/>
   <classpathentry kind="lib" path="/Users/tyongeri/Documents/lib/play-2.2.3/framework/../repository/cache/mysql/mysql-connector-java/jars/mysql-connector-java-5.1.29.jar"/>
-  <classpathentry kind="lib" path="/Users/tyongeri/Documents/lib/play-2.2.3/framework/../repository/cache/org.postgresql/postgresql/jars/postgresql-9.3-1102-jdbc41.jar"/>
+  <classpathentry kind="lib" path="/Users/tyongeri/Documents/lib/play-2.2.3/framework/../repository/cache/org.postgresql/postgresql/jars/postgresql-9.3-1102-jdbc4.jar"/>
   <classpathentry kind="lib" path="/Users/tyongeri/Documents/lib/play-2.2.3/framework/../repository/cache/commons-codec/commons-codec/jars/commons-codec-1.9.jar"/>
   <classpathentry kind="lib" path="/Users/tyongeri/Documents/lib/play-2.2.3/framework/../repository/cache/net.sourceforge.nekohtml/nekohtml/jars/nekohtml-1.9.20.jar"/>
   <classpathentry kind="lib" path="/Users/tyongeri/Documents/lib/play-2.2.3/framework/../repository/cache/xerces/xercesImpl/jars/xercesImpl-2.10.0.jar"/>

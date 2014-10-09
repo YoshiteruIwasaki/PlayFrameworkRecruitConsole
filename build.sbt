@@ -13,8 +13,6 @@ libraryDependencies ++= Seq(
   filters,
   cache,
   "org.webjars" %% "webjars-play" % "2.2.0",
-  "org.webjars" % "bootstrap" % "3.1.1",
-  "org.webjars" % "font-awesome" % "4.0.3",
   "org.webjars" % "select2" % "3.4.5",
   "mysql" % "mysql-connector-java" % "5.1.29",
   "org.postgresql" % "postgresql" % "9.3-1102-jdbc4",
