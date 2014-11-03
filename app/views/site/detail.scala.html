@@ -4,16 +4,6 @@
 @main(bean.title,  null) {
 
 <div class="container">
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">@if(bean.company != null){<a href="@controllers.site.routes.SiteController.listByCompany(bean.company.companyId)">@bean.company.title</a>}&nbsp;
-    @if(bean.category != null){<a href="@controllers.site.routes.SiteController.listByCategory(bean.category.categoryId)"><span class="label label-default">@bean.category.title</span></a>}</h3>
-  </div>
-  <div class="panel-body">
-    @{bean.title}
-    <p class="fix-height"><small><a href="@{bean.url}" target="_blank">@{bean.url}</a></small></p>
-  </div>
-</div>
 <div class="row">
 <div class="col-sm-6 col-md-4">
 		  	<div class="thumbnail hover_img">
@@ -28,7 +18,42 @@
       </div>
 </div>
 </div>
+
+<div class="col-sm-6 col-md-8">
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">@if(bean.company != null){<a href="@controllers.site.routes.SiteController.listByCompany(bean.company.companyId)">@bean.company.title</a>}&nbsp;
+    @if(bean.category != null){<a href="@controllers.site.routes.SiteController.listByCategory(bean.category.categoryId)"><span class="label label-default">@bean.category.title</span></a>}</h3>
+  </div>
+  <div class="panel-body">
+    <h1 class="panel-title">@{bean.title}</h1>
+    <p class="fix-height"><small><a href="@{bean.url}" target="_blank">@{bean.url}</a></small></p>
+    	    <div>
+	    <a href="https://twitter.com/share" class="twitter-share-button" data-lang="ja" data-count="none">ツイート</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+<div class="fb-like" data-href="${request.getBase()}${request.url}" data-send="false" data-layout="button_count" data-width="200" data-show-faces="false" data-font="arial"></div>
+
+						<div class="g-plusone" data-size="medium"></div>
+
+
+<a data-pocket-label="pocket" data-pocket-count="horizontal" class="pocket-btn" data-lang="en"></a>
+<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+
+						<a href="${request.getBase()}${request.url}" class="hatena-bookmark-button"
+						data-hatena-bookmark-title="@{bean.title}" data-hatena-bookmark-layout="simple-balloon"
+						title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@@2x.png"
+						alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+						<script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+
 </div>
+  </div>
+</div></div>
+</div>
+
+
 </div>
 
 }{
