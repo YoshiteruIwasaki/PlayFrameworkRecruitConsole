@@ -1,9 +1,7 @@
 @(beanList: List[models.SiteBean])
-
 @main(null, null) {
-
 <div class="container" id="listContainer">
-<div class="row" id="list0">
+  <div class="row" id="list0">
 	@if(beanList != null && beanList.size() > 0){
 	    @for(bean <- beanList){
 		  <div class="col-sm-6 col-md-4">
@@ -29,15 +27,14 @@
 				  </a>
 				</span>
 		    	<div class="caption caption-ext">
-		    	<h6 class="fix-height"><small>@{if(bean.company != null){bean.company.title}}&nbsp;</small></h6>
-        <p class="fix-height"><small><a href="@{bean.url}" target="_blank">@{bean.url}</a></small></p>
-      </div>
+		    	  <h6 class="fix-height"><small>@{if(bean.company != null){bean.company.title}}&nbsp;</small></h6>
+		    	  <p class="fix-height"><small><a href="@{bean.url}" target="_blank">@{bean.url}</a></small></p>
+		    	</div>
 		  	</div>
 		  </div>
 	    }
 	}
-</div>
-
+  </div>
 </div>
 
 <div class="row">

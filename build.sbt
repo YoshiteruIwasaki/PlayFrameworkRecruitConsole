@@ -33,3 +33,7 @@ lazy val core = project.in(file("modules/core")).dependsOn(common, base).aggrega
 
 lazy val main = project.in(file("."))
     .dependsOn(common, base, core).aggregate(common, base, core)
+
+templatesImport += "_root_.views.html.base.helper._"
+
+templatesImport += "utils._"

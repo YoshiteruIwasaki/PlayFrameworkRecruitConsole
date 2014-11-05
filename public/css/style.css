@@ -7,9 +7,7 @@ html {
 }
 
 body {
-	padding-top: 50px;
-	/* Margin bottom by footer height */
-	margin-bottom: 60px;
+background-color:#eee;
 }
 
 /* Custom page CSS
@@ -19,32 +17,35 @@ body {
 	display: block;
 	width: 350px;
 	height: 263px;
+	overflow:hidden;
 }
 
 body > .wrapper {
-  padding: 60px 15px 0;
+  padding: 80px 0 0;
 }
 
-#footer {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	/* Set the fixed height of the footer here */
-	height: 60px;
-	background-color: #f5f5f5;
+.tagContainer{
+	margin: 20px 0px 0px;
 }
 
-#footer>.container {
-	padding-right: 15px;
-	padding-left: 15px;
+.fb_iframe_widget > span {
+  vertical-align: baseline !important;
+}
+
+.IN-widget {
+  vertical-align: top !important;
+}
+
+.line-btn {
+	vertical-align: baseline;
+}
+
+.pocket-btn {
+    display: inline;
 }
 
 .wrapper {
 	/*padding-bottom: 20px;*/
-}
-
-footer {
-	margin: 20px 0 20px;
 }
 
 .navbar-inverse {
@@ -53,11 +54,7 @@ footer {
 }
 
 .navbar-brand {
-	text-transform: uppercase;
 	font-family: 'Raleway Dots', cursive;
-	font-size: 64px;
-	line-height: 68px;
-	height: 100px;
 }
 
 .navbar-inverse .navbar-brand {

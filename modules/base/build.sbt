@@ -23,3 +23,5 @@ libraryDependencies ++= Seq(
   "commons-beanutils" % "commons-beanutils" % "1.9.1")
 
 playJavaSettings
+
+templatesImport += "utils.base.helper._"

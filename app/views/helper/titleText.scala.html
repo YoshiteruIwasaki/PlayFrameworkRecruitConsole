@@ -1,4 +1,1 @@
-@(text: String)
-@import utils._
-@import _root_.views.html.base.helper._
-@{concatText(text, ApplicationSiteConfigUtils.SITE_TITLE)}
+@(text: String)@{concatText(text, ApplicationSiteConfigUtils.SITE_TITLE + ApplicationSiteConfigUtils.SITE_SUB_TITLE)}

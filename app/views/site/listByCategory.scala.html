@@ -3,11 +3,7 @@
 @main(category.title, null) {
 
 <div class="container" id="listContainer">
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">@{category.title}</h3>
-  </div>
-</div>
+<h1 class="text-center">@{category.title}</h1>
 <div class="row" id="list0">
 	@if(beanList != null && beanList.size() > 0){
 	    @for(bean <- beanList){

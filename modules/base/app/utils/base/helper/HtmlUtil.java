@@ -5,6 +5,7 @@ import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
 import org.apache.commons.lang3.StringEscapeUtils;
 
 import play.mvc.Http.Request;
@@ -306,6 +307,15 @@ public class HtmlUtil {
 		}
 
 		return null;
+	}
+
+	public static String urlEncodeString(String string){
+		try{
+		return java.net.URLEncoder.encode(string, "UTF-8");
+		}catch(Exception e){
+
+		}
+		return "";
 	}
 
 }
