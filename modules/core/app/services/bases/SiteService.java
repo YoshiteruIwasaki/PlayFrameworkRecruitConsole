@@ -5,8 +5,8 @@ import java.util.List;
 import models.bases.Site;
 import play.db.ebean.Model.Finder;
 import utils.base.ApplicationConfigUtils;
+import utils.base.EbeanUtil;
 
-import com.avaje.ebean.FetchConfig;
 import com.avaje.ebean.Page;
 import com.avaje.ebean.PagingList;
 
@@ -80,6 +80,20 @@ public class SiteService {
 	public static boolean hasSameSiteByUrl(String url) {
 		int count = find.where().eq("url", url).findRowCount();
 		return (count != 0);
+	}
+
+	public static List<Site> getSiteResultListBySameCompany(Long companyId,
+			Long siteId) {
+		return find.where().eq("company_id", companyId).ne("site_id", siteId)
+				.orderBy(EbeanUtil.getRandom())
+				.setMaxRows(ApplicationConfigUtils.MAX_ROWS_SUB).findList();
+	}
+
+	public static List<Site> getSiteResultListBySameCategory(Long categoryId,
+			Long companyId) {
+		return find.where().eq("category_id", categoryId)
+				.ne("company_id", companyId).orderBy(EbeanUtil.getRandom())
+				.setMaxRows(ApplicationConfigUtils.MAX_ROWS_SUB).findList();
 	}
 
 }

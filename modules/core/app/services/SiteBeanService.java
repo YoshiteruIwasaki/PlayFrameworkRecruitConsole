@@ -78,4 +78,24 @@ public class SiteBeanService extends SiteService {
 		return list;
 	}
 
+	public static List<SiteBean> getSiteBeanResultListBySameCompany(Long companyId,
+			Long siteId) {
+		ArrayList<SiteBean> list = new ArrayList<SiteBean>();
+		List<Site> resultList = getSiteResultListBySameCompany(companyId, siteId);
+		for (Site site : resultList) {
+			list.add(setSiteBean(site));
+		}
+		return list;
+	}
+
+	public static List<SiteBean> getSiteBeanResultListBySameCategory(
+			Long categoryId, Long companyId) {
+		ArrayList<SiteBean> list = new ArrayList<SiteBean>();
+		List<Site> resultList = getSiteResultListBySameCategory(categoryId, companyId);
+		for (Site site : resultList) {
+			list.add(setSiteBean(site));
+		}
+		return list;
+	}
+
 }

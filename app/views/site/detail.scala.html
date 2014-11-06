@@ -1,4 +1,4 @@
-@(bean: models.SiteBean)
+@(bean: models.SiteBean, sameCompanySiteList: List[models.SiteBean], sameCategorySiteList: List[models.SiteBean])
 @import play.i18n._
 @main(bean.title,  null) {
 
@@ -136,10 +136,36 @@
 					<h1 class="panel-title">関連するページ</h1>
 				</div>
 				<div class="panel-body">
-					<h3 class="panel-title">同じ業種
-					</h3>
-					<h3 class="panel-title">同じ会社
-					</h3>
+				@if((sameCategorySiteList == null || sameCategorySiteList.size() ==
+					0) && (sameCompanySiteList == null || sameCompanySiteList.size() ==
+					0)){
+					<p>関連するページはありません。</p>
+					}
+					@if(sameCategorySiteList != null && sameCategorySiteList.size() >
+					0){
+					<h5>@if(bean.category != null){@bean.category.title}</h5>
+					<div class="row">
+						@for(bean <- sameCategorySiteList){
+						<div class="col-xs-6 col-md-4">
+							<a href="@controllers.site.routes.SiteController.detail(bean.siteId)" class="thumbnail"
+								style="height: 120px; overflow: hidden;"><img
+								title="@{bean.title}" src="@{bean.thumbUrl}" alt="@{bean.url}" /></a>
+						</div>
+						}
+					</div>
+					} @if(sameCompanySiteList != null && sameCompanySiteList.size() >
+					0){
+					<h5>@if(bean.company != null){@bean.company.title}</h5>
+					<div class="row">
+						@for(bean <- sameCompanySiteList){
+						<div class="col-xs-6 col-md-4">
+							<a href="@controllers.site.routes.SiteController.detail(bean.siteId)" class="thumbnail"
+								style="height: 120px; overflow: hidden;"><img
+								title="@{bean.title}" src="@{bean.thumbUrl}" alt="@{bean.url}" /></a>
+						</div>
+						}
+					</div>
+					}
 				</div>
 			</div>
 		</div>
