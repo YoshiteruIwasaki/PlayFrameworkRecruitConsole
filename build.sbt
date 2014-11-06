@@ -36,4 +36,6 @@ lazy val main = project.in(file("."))
 
 templatesImport += "_root_.views.html.base.helper._"
 
+templatesImport += "_root_.views.html.helper._"
+
 templatesImport += "utils._"

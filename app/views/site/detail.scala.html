@@ -1,5 +1,4 @@
 @(bean: models.SiteBean)
-@import _root_.views.html.base.helper._
 @import play.i18n._
 @main(bean.title,  null) {
 
@@ -45,9 +44,6 @@
 			<div class="panel panel-default">
 				<div class="panel-body">
 
-					<div class="fb-like" data-send="false" data-width="600"
-						data-show-faces="true"></div>
-
 					<div>
 						<a href="https://twitter.com/share" class="twitter-share-button"
 							data-lang="ja" data-count="vertical">ツイート</a>
@@ -88,7 +84,7 @@
 						</script>
 
 						<a href="http://@{request.host}@{request.uri}"
-							data-hatena-bookmark-title="@{bean.title}"
+							data-hatena-bookmark-title="@titleText(bean.title)"
 							class="hatena-bookmark-button"
 							data-hatena-bookmark-layout="vertical-balloon"
 							data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img
@@ -128,6 +124,10 @@
 							width="36px" height="60px" alt="LINEで送る" class="line-btn" /></a>
 
 					</div>
+
+				<div class="fb-comments"
+					data-href="http://@{request.host}@{request.uri}"
+					data-num-posts="3" data-width="620"></div>
 				</div>
 			</div>
 

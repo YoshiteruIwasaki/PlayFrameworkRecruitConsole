@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import controllers.routes;
+import models.SiteBean;
+
 import org.junit.*;
 
 import play.mvc.*;
@@ -37,7 +39,8 @@ public class ApplicationTest {
     public void indexTemplateShouldContainTheStringThatIsPassedToIt() {
         running(fakeApplication(), new Runnable() {
             public void run() {
-                Content html = views.html.index.render("Your new application is ready.");
+            	List<SiteBean> list = new ArrayList<SiteBean>();
+                Content html = views.html.index.render(list);
                 assertThat(contentType(html)).isEqualTo("text/html");
                 assertThat(contentAsString(html)).contains("Your new application is ready.");
             }
