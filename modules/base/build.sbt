@@ -1,8 +1,10 @@
-import play.Project._
+import play.twirl.sbt.Import._
 
 name := """PlayFrameworkRecruitBase"""
 
-version := "1.0-SNAPSHOT"
+version := "1.1"
+
+scalaVersion := "2.11.1"
 
 libraryDependencies ++= Seq(
   // Select Play modules
@@ -12,7 +14,8 @@ libraryDependencies ++= Seq(
   javaCore,  // The core Java API
   filters,
   cache,
-  "org.webjars" %% "webjars-play" % "2.2.0",
+  javaWs,
+  "org.webjars" %% "webjars-play" % "2.3.0",
   "org.webjars" % "select2" % "3.4.5",
   "mysql" % "mysql-connector-java" % "5.1.29",
   "org.postgresql" % "postgresql" % "9.3-1102-jdbc4",
@@ -22,6 +25,5 @@ libraryDependencies ++= Seq(
   "commons-validator" % "commons-validator" % "1.4.0",
   "commons-beanutils" % "commons-beanutils" % "1.9.1")
 
-playJavaSettings
 
-templatesImport += "utils.base.helper._"
+TwirlKeys.templateImports += "utils.base.helper._"
