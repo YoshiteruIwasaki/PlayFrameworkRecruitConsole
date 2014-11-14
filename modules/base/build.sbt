@@ -1,8 +1,18 @@
-import play.Project._
+import play.twirl.sbt.Import._
 
-name := """PlayFrameworkRecruitBase"""
+name := """base"""
 
-version := "1.0-SNAPSHOT"
+version := "1.1"
+
+lazy val base = (project in file("modules/base")).enablePlugins(PlayJava).dependsOn(common).aggregate(common)
+
+lazy val common = (project in file("modules/common")).enablePlugins(PlayJava)
+
+scalaVersion := "2.11.1"
+
+Common.settings
+
+libraryDependencies ++= Common.coreDependency
 
 libraryDependencies ++= Seq(
   // Select Play modules
@@ -12,16 +22,7 @@ libraryDependencies ++= Seq(
   javaCore,  // The core Java API
   filters,
   cache,
-  "org.webjars" %% "webjars-play" % "2.2.0",
-  "org.webjars" % "select2" % "3.4.5",
-  "mysql" % "mysql-connector-java" % "5.1.29",
-  "org.postgresql" % "postgresql" % "9.3-1102-jdbc4",
-  "commons-codec" % "commons-codec" % "1.9",
-  "net.sourceforge.nekohtml" % "nekohtml" % "1.9.20",
-  "org.codehaus.jackson" % "jackson-jaxrs" % "1.9.13",
-  "commons-validator" % "commons-validator" % "1.4.0",
-  "commons-beanutils" % "commons-beanutils" % "1.9.1")
+  javaWs)
 
-playJavaSettings
 
-templatesImport += "utils.base.helper._"
+TwirlKeys.templateImports += "utils.base.helper._"
