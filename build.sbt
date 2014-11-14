@@ -21,17 +21,19 @@ libraryDependencies ++= Seq(
   javaCore,  // The core Java API
   filters,
   cache,
-  javaWs
+  javaWs,
+  "org.webjars" % "select2" % "3.4.5"
   )
 
 //lazy val common = RootProject(file("modules/common"))
 
-lazy val common = (project in file("modules/common")).enablePlugins(PlayJava)
+lazy val core = (project in file("modules/core")).enablePlugins(PlayJava).dependsOn(common, base).aggregate(common, base)
 
 lazy val base = (project in file("modules/base")).enablePlugins(PlayJava).dependsOn(common).aggregate(common)
 
-lazy val core = (project in file("modules/core")).enablePlugins(PlayJava).dependsOn(common, base).aggregate(common, base)
+//lazy val common = (project in file("modules/common")).enablePlugins(PlayJava)
 
+lazy val common = (project in file("modules/common")).enablePlugins(SbtWeb)
 
 TwirlKeys.templateImports += "_root_.views.html.base.helper._"
 

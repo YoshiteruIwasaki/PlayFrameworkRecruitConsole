@@ -1,13 +1,12 @@
 import play.twirl.sbt.Import._
 
-name := """PlayFrameworkRecruitBase"""
+name := """base"""
 
 version := "1.1"
 
-lazy val base = (project in file(".")).enablePlugins(PlayJava)
-    .dependsOn(common).aggregate(common)
+lazy val base = (project in file("modules/base")).enablePlugins(PlayJava).dependsOn(common).aggregate(common)
 
-lazy val common = (project in file("common")).enablePlugins(PlayJava)
+lazy val common = (project in file("modules/common")).enablePlugins(PlayJava)
 
 scalaVersion := "2.11.1"
 

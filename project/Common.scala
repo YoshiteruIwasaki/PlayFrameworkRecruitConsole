@@ -6,7 +6,7 @@ object Common {
   )
 
   val coreDependency = Seq(
-    "org.webjars" %% "webjars-play" % "2.3.0",
+    "org.webjars" %% "webjars-play" % "2.3.0-2",
     "mysql" % "mysql-connector-java" % "5.1.29",
     "org.postgresql" % "postgresql" % "9.3-1102-jdbc4",
     "commons-codec" % "commons-codec" % "1.9",

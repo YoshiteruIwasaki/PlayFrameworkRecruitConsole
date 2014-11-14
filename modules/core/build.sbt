@@ -1,4 +1,4 @@
-name := """PlayFrameworkRecruitCore"""
+name := """core"""
 
 version := "1.1"
 
