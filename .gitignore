@@ -20,3 +20,4 @@ bin
 /activator-sbt-atmos-akka-shim.sbt
 
 .DS_Store
+.cache
