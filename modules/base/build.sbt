@@ -2,13 +2,13 @@ import play.twirl.sbt.Import._
 
 name := """base"""
 
-version := "1.1"
+version := "1.2"
 
 lazy val base = (project in file("modules/base")).enablePlugins(PlayJava).dependsOn(common).aggregate(common)
 
 lazy val common = (project in file("modules/common")).enablePlugins(PlayJava)
 
-scalaVersion := "2.11.1"
+scalaVersion := "2.11.6"
 
 Common.settings
 

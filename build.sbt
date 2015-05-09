@@ -2,12 +2,12 @@ import play.twirl.sbt.Import._
 
 name := """PlayFrameworkRecruitConsole"""
 
-version := "1.1"
+version := "1.2"
 
 lazy val main = (project in file(".")).enablePlugins(PlayJava)
     .dependsOn(common, base, core).aggregate(common, base, core)
 
-scalaVersion := "2.11.1"
+scalaVersion := "2.11.6"
 
 Common.settings
 
@@ -22,7 +22,7 @@ libraryDependencies ++= Seq(
   filters,
   cache,
   javaWs,
-  "org.webjars" % "select2" % "3.4.5"
+  "org.webjars" % "select2" % "3.5.2"
   )
 
 //lazy val common = RootProject(file("modules/common"))

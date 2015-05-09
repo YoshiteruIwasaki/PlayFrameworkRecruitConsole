@@ -1,8 +1,8 @@
 name := """core"""
 
-version := "1.1"
+version := "1.2"
 
-scalaVersion := "2.11.1"
+scalaVersion := "2.11.6"
 
 Common.settings
 
